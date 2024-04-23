@@ -1,0 +1,18 @@
+<apex:component >
+    <script>
+        angular.module('DashboardApp', ['ngRoute']);
+
+    </script>
+    <script src="{!$Resource.applicationPortalHeaderScript}" />
+    <script src="{!$Resource.applicationPortalDashboardScript}" />
+    <script src="{!$Resource.applicationPortalFaqPageScript}" />
+    <script src="{!$Resource.applicationPortalContactUsScript}" />
+    <script src="{!$Resource.applicationPortalApplicationsScript}" />
+    <script src="{!$Resource.applicationPortalAcademicCalendarScript}" />
+    <script src="{!$Resource.applicationPortalTuitionFeesScript}" />
+    <script src="{!$Resource.applicationPoratlAcademicSupportPageScript}" />
+    <script src="{!$Resource.HostelServicePageJS}" />
+    <script src="{!$Resource.TrasportServicePageJS}" />
+    <script src="{!$Resource.applicationPortalLoginPageJS}"/>
+
+</apex:component>

@@ -1,0 +1,290 @@
+:root {
+    --primary: #082E44;
+    --purple: #5C0C9C;
+    --golden: #A28C4F;
+    --black: #262626;
+    --white: #fff;
+    --grey: #F1F0F0;
+    --lightGrey: #EBEBEB;
+    --yellow: #ffb92c;
+	--cardBorder:#ddd;
+}
+*{
+    font-family: 'Poppins';
+}
+.contactUsContainer{
+	width:976px;
+}
+.writeButton {
+    background-color:var(--primary);
+	color:var(--white);
+	width:138px;
+	height:40px;
+	border-radius:8px;
+	padding:8px 16px 11px 16px;
+	float:right;
+	margin-top:-2.5%;
+}
+.writeButton:hover {
+    background: var(--yellow);
+}    
+.mainContainer{
+    width:976px; 
+    height:674px; 
+    top:104px; 
+    margin-left:1%;
+}
+ .TopTitle {
+    color: var(--primary);
+    font-size: 24px; 
+    font-weight: 500; 
+    word-wrap: break-word; 
+    padding: 1%;                                          
+}
+.buttonclass{
+   margin-top:-2%;
+   
+   }
+.card1{
+    border: 1px solid var(--cardBorder);
+    border-radius: 15px;
+    background: white;
+	margin-top: 3%;
+    padding: 1%;
+	width: 976px;
+    height: 277px;
+    border-radius: 8px;
+}
+.cardTitel{
+    font-weight: 700; 
+    padding: 1%;
+}
+.AdminContainer{
+    display:flex;
+    gap:17px;
+    width:430.23px;
+    height:67.8px;
+    
+}
+.img{
+	aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 56px;
+    overflow: hidden;
+    max-width: 100%;
+}
+.details{
+    color: #7a7a7a;
+    flex-grow: 1;
+    flex-basis: auto;
+    font: 400 14px Ubuntu, sans-serif;
+}
+.firstRow{
+    display: flex;
+    padding: 1%;
+    margin-bottom: 1%;
+}
+.contact-container {
+    display: flex;
+    margin-top: 6px;
+    gap: 5px;
+                                    
+}
+.heading {
+    color: #000;
+    font: 500 15px/145% Ubuntu, sans-serif;
+}
+.address-container{
+    width: 322px;
+    height: 76.6px;              
+}
+.AllRow{
+    padding: 1%;              
+ }
+
+<!--Write To Us Starts From Here-->
+.arrow{
+	width:9px;
+	height:16px;
+	margin-top:4px;
+	margin-left:7px;
+	color:
+                                            
+}
+.topHeading{
+display:flex;
+gap:12px;
+padding:1%;
+margin:1%;
+cursor:pointer;
+                                }
+.formCard{
+	border: 1px solid var(--cardBorder);
+    background: var(--white);
+	border-radius:8px;
+    width: 976px;
+    height: 586px;
+	margin: 1%;
+    padding: 2%;
+	color:#242424;
+}
+.formRow{
+	display:flex;
+	gap:16px;
+}
+.formGroup{
+ 	margin-bottom:2%;
+}
+.lab{
+	width: 100%;
+    font-weight: 400;
+    font-size: medium;
+	padding:1%;
+}
+.input{
+	width: 442px;
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid var(--cardBorder);
+	padding:1%;
+	margin:1%;
+}
+#campus option:first-child{
+font-weight:200;
+color:#ddd;
+}
+#grade option:first-child{
+font-weight:200;
+color:#ddd;
+}
+.inputMessage{
+	width:900px;
+	height:108px;
+	border-radius:6px;
+	border:1px solid var(--cardBorder);
+	padding:1%;
+	margin:1%;
+}
+.closeButton{
+width:138px;
+Height:40px;
+border-radius:8px;
+border:1px solid var(--primary);
+padding:1%;
+margin:1%;
+gap:10px;
+background:white;
+color:var(--primary);
+}
+                                
+.submitButton{
+width:138px;
+Height:40px;
+border-radius:8px;
+border:1px solid;
+padding:1%;
+margin:1%;
+gap:10px;
+background:var(--primary);
+color:white;
+}
+
+<!-- Message sumitted Successfully-->
+.SuccessfullyBooked{
+   text-align: center; 
+   color: black; 
+   font-size: 20px; 
+   font-weight: 600;
+   word-wrap: break-word;
+   margin-top: -5%;
+}
+.SuccessfullyCard {
+    width: 553px;
+    height: 427px;
+    margin-left: 1%;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    position: relative;
+    margin-top: 1%;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.checkAvailability-btn {
+    background: var(--primary);
+    margin-top: 8%;
+    color: var(--white);
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    padding: 0.75rem 2rem;
+    border: none;
+    -moz-border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0 0 rgba(0, 0, 0, 0.64);
+    transition: all 0.5s ease;
+    display: block;  
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.checkAvailability-btn:hover {
+    background: var(--yellow);
+}    
+
+.closeButton{
+	width:96px;
+	height:40p;
+	border-radius:8px;
+	background-color:var(--primary);
+    color:var(--white);
+    border:1px solid var(--primary) ;
+}
+
+.theme-color{
+	background-color:var(--primary) !Important;
+	border:none !Important;
+}
+
+.goBackButton{
+	width:116px;
+	height:40px;
+    background-color:var(--white);
+    color:var(--primary);
+    border:1px solid var(--primary);
+    border-radius:8px;
+}
+.logoutButton{
+    background-color:var(--primary);
+    color:var(--white);
+    border:1px solid var(--primary) ;
+    border-radius:8px;
+	width:116px;
+	height:40px;
+}
+.modalContent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: var(--white);
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 1.3rem;
+    outline: 0;
+	transform: translateY(50%);
+	text-align:center;
+    font-size: 20px;
+    font-weight: 600;
+    word-wrap: break-word;
+}

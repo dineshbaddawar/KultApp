@@ -1,0 +1,143 @@
+<template>
+    <div class="slds-m-around_x-small slds-modal_large slds-scrollable_x" style="z-index: 1; padding-bottom: 25px;">
+        <div class="container-fluid" style="margin: 1%;">
+            <table class="table slds-table slds-table--bordered slds-table--cell-buffer"
+                style="table-layout: fixed; width: 100%">
+                <thead>
+                    <tr class="slds-text-title--caps">
+                        <th class="slds-truncate" scope="col">
+                            <div class="slds-truncate" title="Sr No">Sr No</div>
+                        </th>
+                        <th class="slds-truncate" scope="col">
+                            <div class="slds-truncate" title="Order No">Order No</div>
+                        </th>
+                        <th class="slds-truncate" scope="col">
+                            <div class="slds-truncate" title="Date Of Order">Date Of Order</div>
+                        </th>
+                        <th class="slds-truncate" scope="col">
+                            <div class="slds-truncate" title="Shipping Mobile No">Shipping Mobile No</div>
+                        </th>
+                        <th class="slds-truncate" scope="col">
+                            <div class="slds-truncate" title="Reason">Reason</div>
+                        </th>
+
+                        <template if:true={hideRTOOrder}>
+                            <th class="slds-truncate" scope="col">
+                                <div class="slds-truncate" title="Order Status">Order Status</div>
+                            </th>
+                            <th class="slds-truncate" scope="col">
+                                <div class="slds-truncate" title="Remarks">Remarks</div>
+                            </th>
+                        </template>
+
+                        <template if:true={hidelostinTransit}>
+                            <th class="slds-truncate" scope="col">
+                                <div class="slds-truncate" title="AWB Number">AWB Number</div>
+                            </th>
+                            <th class="slds-truncate" scope="col">
+                                <div class="slds-truncate" title="Courier Partner">Courier Partner</div>
+                            </th>
+                        </template>
+                        <template if:true={hideOutOfStock}>
+                            <th class="slds-truncate" scope="col">
+                                <div class="slds-truncate" title="Current PIN Code">Current PIN Code</div>
+                            </th>
+                        </template>
+
+                        <template if:true={hidecourierDeliveryIssue}>
+                            <th class="slds-truncate" scope="col">
+                                <div class="slds-truncate" title="City Name">City Name</div>
+                            </th>
+                        </template>
+
+                        <template if:true={hidePindCodeSeriveValue}>
+                            <th class="slds-truncate" scope="col">
+                                <div class="slds-truncate" title="Item">Item</div>
+                            </th>
+                            <th class="slds-truncate" scope="col">
+                                <div class="slds-truncate" title="OOS Quantity">OOS Quantity</div>
+                            </th>
+                            <th class="slds-truncate" scope="col">
+                                <div class="slds-truncate" title="OOS SKU Code">OOS SKU Code</div>
+                            </th>
+                           
+                            <th class="slds-truncate" scope="col">
+                                <div class="slds-truncate" title="Remarks">Remarks</div>
+                            </th>
+                        </template>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={jsonData} for:item="record">
+                        <tr key={record.orderno} class="slds-hint-parent">
+                            <td data-label="Sr No">
+                                <div class="slds-truncate">{record.sno}</div>
+                            </td>
+                            <td data-label="Order No">
+                                <div class="slds-truncate" title={record.orderno}>{record.orderno}</div>
+                            </td>
+                            <td data-label="Date Of Order">
+                                <div class="slds-truncate" title={record.dateoforder}>{record.dateoforder}</div>
+                            </td>
+                            <td data-label="Shipping Mobile No">
+                                <div class="slds-truncate" title={record.shippingmobileno}>{record.shippingmobileno}
+                                </div>
+                            </td>
+                            
+                            <td data-label="Reason">
+                                <div class="slds-truncate" title={record.reason}>{record.reason}</div>
+                            </td>
+
+                            <template if:true={hideRTOOrder}>
+                                <td data-label="Order Status">
+                                    <div class="slds-truncate" title={record.orderstatus}>{record.orderstatus}</div>
+                                </td>
+                                <td data-label="Remarks">
+                                    <div class="slds-truncate" title={record.remarks}>{record.remarks}</div>
+                                </td>
+                            </template>
+
+                            <template if:true={hidelostinTransit}>
+                                <td data-label="AWB Number">
+                                    <div class="slds-truncate" title={record.awbnumber}>{record.awbnumber}</div>
+                                </td>
+                                <td data-label="Courier Partner">
+                                    <div class="slds-truncate" title={record.courierpartner}>{record.courierpartner}</div>
+                                </td>
+                            </template>
+
+                            <template if:true={hideOutOfStock}>
+                                <td data-label="Current PIN Code">
+                                    <div class="slds-truncate" title={record.currentpincode}>{record.currentpincode}
+                                    </div>
+                                </td>
+                            </template>
+
+                            <template if:true={hidecourierDeliveryIssue}>
+                                <td data-label="City Name">
+                                    <div class="slds-truncate" title={record.cityname}>{record.cityname}</div>
+                                </td>
+                            </template>
+
+                            <template if:true={hidePindCodeSeriveValue}>
+                                <td data-label="Item">
+                                    <div class="slds-truncate" title={record.item}>{record.item}</div>
+                                </td>
+                                <td data-label="OOS Quantity">
+                                    <div class="slds-truncate" title={record.oosquantity}>{record.oosquantity}</div>
+                                </td>
+                                <td data-label="OOS SKU Code">
+                                    <div class="slds-truncate" title={record.oosskucode}>{record.oosskucode}</div>
+                                </td>
+                               
+                                <td data-label="Remarks">
+                                    <div class="slds-truncate" title={record.remarks}>{record.remarks}</div>
+                                </td>
+                            </template>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

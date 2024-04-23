@@ -1,0 +1,263 @@
+<template>
+	<lightning-quick-action-panel header="Move To Refund">
+		<lightning-combobox label="Refund Type" options={refundOptions} value={caseRefund}
+			onchange={handelRefundTypeChange} required></lightning-combobox>
+
+		<lightning-input type="text" name="Refund Reason" value={refundReason} label="Refund Reason"
+			onchange={handelRefundReasonChange} required></lightning-input>
+
+		<lightning-combobox label="Coupon" options={couponOptions} value={Coupon} onchange={handelCouponTypeChange}
+			required></lightning-combobox>
+
+		<lightning-input type="text" name="Paid Amount" value={paidamount} label="Paid Amount"
+			onchange={handelRefundAmountChange} disabled></lightning-input>
+
+		<!-- <lightning-input type="text" variant="standard" value={ContactPhone} label="Logging Mobile No." onchange={handelContactPhoneChange}></lightning-input> -->
+		<lightning-record-picker object-api-name="User" placeholder="Search..." label="Select Refund Team Member"
+			filter={filter} value={refundteamMemeber} onchange={handleChange} required></lightning-record-picker>
+
+
+
+		<template if:true={isFullSelected}>
+			<tr>
+				<td colspan="5">&nbsp;</td>
+			</tr>
+
+		</template>
+
+		<!--Full-->
+		<template if:true={isFullSelected}>
+			<div class="slds-scrollable_x" style="height:auto;width:100%" tabindex="0">
+				<table class="slds-table slds-table_bordered slds-table_cell-buffer">
+
+					<thead>
+						<tr class="slds-text-title_caps">
+							<th scope="col">
+								<div class="slds-truncate" title="CheckBox"></div>
+							</th>
+							<th scope="col">
+								<div class="slds-truncate" title="Item">Item</div>
+							</th>
+							<th scope="col">
+								<div class="slds-truncate" title="SKU Details">SKU Details</div>
+							</th>
+							<th scope="col">
+								<div class="slds-truncate" title="Quantity">Quantity</div>
+							</th>
+							<th scope="col">
+								<div class="slds-truncate" title="MRP">Total Price</div>
+							</th>
+
+							<th scope="col">
+								<div class="slds-truncate" title="Refund Type">Refund Type</div>
+							</th>
+							<th scope="col">
+								<div class="slds-truncate" title="Refund Quantity">Refund Quantity</div>
+							</th>
+
+							<th scope="col">
+								<div class="slds-truncate" title="Refund Reason">Refund Reason</div>
+							</th>
+
+							<th scope="col">
+								<div class="slds-truncate" title="Refund Reason">Refund Description</div>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template for:each={records} for:item="opls" for:index="index">
+
+							<tr key={opls.Id}>
+								<td key={opls.Id}>
+									<lightning-input class="slds-p-left_xx-small" type="checkbox" checked={checkboxVal}
+										disabled={isCheckboxDisabled}> </lightning-input>
+								</td>
+								<td key={opls.Id}>
+
+									<lightning-input type="Test" variant="standard" value={opls.productName}
+										class="custom-input" name="productName" label=""
+										disabled></lightning-input>
+
+								</td>
+								<td key={opls.Id}>
+
+									<lightning-input type="Text" variant="standard" value={opls.skudetail}
+										class="custom-input" name="SkuDetails" label=""
+										disabled></lightning-input>
+
+								</td>
+								<td key={opls.Id}>
+
+									<lightning-input type="number" variant="standard" value={opls.totalQuantity}
+										class="custom-inputtotalquantity" name="totalQuantity" label=""
+										disabled></lightning-input>
+
+								</td>
+								<td key={opls.Id}>
+									<lightning-input type="number" value={opls.totalprice} class="custom-inputmrp"
+										variant="standard" name="MRP" label="" disabled></lightning-input>
+								</td>
+								<td key={opls.Id}>
+									<lightning-combobox name="Refund Type" label="" value={refundtypeOli}
+										placeholder="Select Value" options={refundtypeOLIOptions}
+										onchange={handelRefundTypeOLIChange} data-row-index={index} disabled>
+									</lightning-combobox>
+								</td>
+								<td key={opls.Id}>
+
+									<lightning-input type="number" variant="standard" value={opls.refundQuantity}
+										class="custom-inputrefundquantity" name="refundQuantity" label=""
+										disabled></lightning-input>
+
+								</td>
+								<!-- <td key={opls.Id}>
+									<lightning-input type="number" variant="standard" name="Refund Price" value={opls.refundPrice}
+										label="Refund Price" disabled></lightning-input>
+								</td> -->
+
+								<td key={opls.Id}>
+									<lightning-combobox name="RefundReasonFull" label="" value={opls.refundreasonPickListValue} data-row-index={index}
+										placeholder="Select Refund reason" options={optionsCategory} required
+										onchange={handleRefundReason}></lightning-combobox>
+								</td>
+								<td key={opls.Id}>
+									<lightning-input type="Text" variant="standard" name="Refund Reason"
+										data-row-index={index} label=""
+										onchange={handelOLIRefundReasonChange} value={opls.OliRefundReason}
+										disabled={opls.disableReason} required></lightning-input>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+		</template>
+
+
+		<template if:true={isPartialSelected}>
+			<tr>
+				<td colspan="5">&nbsp;</td>
+			</tr>
+		</template>
+
+		<!--Partial-->
+		<template if:true={isPartialSelected}>
+			<div class="slds-scrollable_x" style="height:auto;width:100%" tabindex="0">
+				<table class="slds-table slds-table_bordered slds-table_cell-buffer">
+					<thead>
+						<tr class="slds-text-title_caps">
+							<th scope="col">
+								<div class="slds-truncate" title="CheckBox"></div>
+							</th>
+							<th scope="col">
+								<div class="slds-truncate" title="Item">Item</div>
+							</th>
+							<th scope="col">
+								<div class="slds-truncate" title="SKU Details">SKU Details</div>
+							</th>
+							<th scope="col">
+								<div class="slds-truncate" title="Quantity">Quantity</div>
+							</th>
+							<th scope="col">
+								<div class="slds-truncate" title="MRP">Total Price</div>
+							</th>
+
+							<th scope="col">
+								<div class="slds-truncate" title="Refund Type">Refund Type</div>
+							</th>
+							<th scope="col">
+								<div class="slds-truncate" title="Refund Quantity">Refund Quantity</div>
+							</th>
+
+							<th scope="col">
+								<div class="slds-truncate" title="Refund Reason">Refund Reason</div>
+							</th>
+							<th scope="col">
+								<div class="slds-truncate" title="Refund Reason">Refund Description</div>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template for:each={records2} for:item="opls" for:index="index">
+
+							<tr key={opls.Id}>
+
+								<td key={opls.Id}>
+									<lightning-input data-row-index={index} class="slds-p-left_xx-small" type="checkbox"
+										checked={opls.checkboxVal2} onchange={handleCheckboxChange2}>
+									</lightning-input>
+								</td>
+								<td key={opls.Id}>
+									<lightning-input type="Text" variant="standard" value={opls.productName}
+										class="custom-input" name="productName" label=""
+										disabled></lightning-input>
+
+								</td>
+								<td key={opls.Id}>
+									<lightning-input type="text" variant="standard" name="SKUDetail"
+										class="custom-inputrefundreason" label="" disabled
+										value={opls.skudetail}></lightning-input>
+								</td>
+								<td key={opls.Id}>
+									<lightning-input type="number" variant="standard" value={opls.totalQuantity}
+										class="custom-inputtotalquantity" name="totalQuantity" label=""
+										disabled></lightning-input>
+
+								</td>
+								<td key={opls.Id}>
+									<lightning-input type="number" value={opls.totalprice} variant="standard" name="MRP"
+										label="" class="custom-inputmrp" disabled></lightning-input>
+								</td>
+
+								<td key={opls.Id}>
+									<lightning-combobox name="Refund Type" label=""
+										value={opls.refundtypeOli} placeholder="Select Value"
+										options={refundtypeOLIOptions} disabled={opls.disableReason}
+										onchange={handelRefundTypeOLIChange} data-row-index={index}>
+									</lightning-combobox>
+								</td>
+								<td key={opls.Id}>
+									<lightning-input data-row-index={index} type="number" variant="standard"
+										class="custom-inputrefundquantity" value={opls.refundQuantity}
+										name="refundQuantity" label="" disabled={opls.editable}
+										onchange={handelrefundChange}></lightning-input>
+								</td>
+
+
+								<!-- <td key={opls.Id}>
+									<lightning-input type="Test" variant="standard" name="Refund Reason"
+										data-row-index={index} label="Refund Reason"
+										onchange={handelOLIRefundReasonChange1} value={opls.OliRefundReason1}
+										disabled={opls.disableReason} required></lightning-input>
+								</td> -->
+								<td key={opls.Id}>
+									<lightning-combobox name="RefundReasonPartial" label="" data-row-index={index} value={opls.refundreasonPickListValue}
+										placeholder="Select Refund reason" options={optionsCategory} required
+										onchange={handleRefundReason} disabled={opls.disableReason}></lightning-combobox>
+								</td>
+								<td key={opls.Id}>
+									<lightning-input type="Text" variant="standard" name="Refund Reason"
+										data-row-index={index} label=""
+										onchange={handelOLIRefundReasonChange1} value={opls.OliRefundReason}
+										disabled={opls.disableReason} required></lightning-input>
+								</td>
+
+							</tr>
+						</template>
+
+					</tbody>
+				</table>
+			</div>
+		</template>
+
+		<div class="slds-m-top_medium slds-text-align_center">
+
+			<lightning-button type="submit" label="Cancel" onclick={handleCancel}></lightning-button>
+			&nbsp; &nbsp;
+			<lightning-button type="submit" label="Move To Refund" variant="brand" onclick={handleSave}>
+			</lightning-button>
+
+		</div>
+
+	</lightning-quick-action-panel>
+</template>

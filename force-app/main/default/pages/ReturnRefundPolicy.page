@@ -1,0 +1,96 @@
+<apex:page renderAs="pdf" showHeader="false" sidebar="false"  applyHtmlTag="false" applyBodyTag="false">
+    
+    <head>
+        <style>
+            @page {
+            margin-top: 1cm;
+            margin-left: 0.5cm;
+            margin-right: 0.5cm;                        
+            // background-image: url('https://sudeengg--util--c.sandbox.vf.force.com/resource/1673873517000/Watermark?');
+            background-repeat: no-repeat;
+            background-position: center;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <span>
+            <div style="display: inline-block;vertical-align: middle;float:left;width:20%;">
+                <apex:image url="{!$Resource.kultAppLogo}" width="120" height="60" /><br/>   
+            </div>
+        </span>
+        
+        <br/>
+        <br/>
+        <br/>
+        
+        <h1 style="text-align: center;color:#13928d;font-family: Noto Sans,Helvetica,sans-serif;font-size:28px;">
+            RETURN AND REFUND POLICY
+        </h1>
+        <p style="margin-left: 6%;">
+            <b>
+                <u>
+                    Damaged /Missing/Wrong or Any Other Issues
+                </u>
+            </b>     
+        </p>
+        <table style="float: left" border="0" cellpadding="8" cellspacing="0" width="100%">        
+            <tr>
+                <td width="50%">
+                    <ul>
+                        <li>
+                            Product has to be with original packing including, price tages, labels, freebies offered by brand and other accessories if any.
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            In case of wrong product delivery issue, the delivered products should not be in used condition.<br/>
+                            Product should not be damaged due to misuse/overuse by the customer
+                        </li>
+                    </ul> 
+                    <ul>
+                        <li>
+                            If the entire order is wrong/missing/damaged the product/s has to return with the original packing of Kult.
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            Return will not be accepted for any free product provided by brand. 
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            In case of any free gift included as part of order/item of an order has to be returned along with the originally delivered product.
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            In case of replacement, it will be subject to the availability of stock. In the case that a replacement may not be available, the full amount paid against the product(s) will be refunded.
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            Customer needs to place the request at customer care within 15 days of delivery(Date of delivery +14 days) by clicking Contact Kult Support in profile section from Kult app or through email on <a href="https://kult.app/">CS@kult.app</a>    
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            Request will not be considered if request placed on or after 16th day of delivery.
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            For all return requests including quality issues e.g. Product expiry,color,texture etc. customer needs to share the supportive images to validate the request. Return will only be accepted if all other return conditions are true also the return eligibility decision will be at the sole discretion of Kult.
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            Post successful validations refunds are processed within 1-2 business days from our side.
+                        </li>
+                    </ul>
+                </td>                
+            </tr>                       
+        </table>
+    </body>
+    
+</apex:page>

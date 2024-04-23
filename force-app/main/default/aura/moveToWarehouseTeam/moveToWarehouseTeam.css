@@ -1,0 +1,16 @@
+.THIS .attach-to-bottom{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+}
+
+.THIS .twoColumns{
+    display: flex;
+    justify-content: space-between;
+}
+
+.THIS .columnChild{
+    width: -webkit-fill-available;
+    max-width: 40%;
+}

@@ -1,0 +1,23 @@
+.dummy{
+	color : black;
+}
+
+.custom-input{
+	 width: 120px;
+}
+
+.custom-inputtotalquantity{
+	 width: 100px;
+}
+
+.custom-inputrefundquantity{
+	width: 100px;
+}
+
+.custom-inputrefundreason{
+	width: 100%;
+}
+
+.custom-inputmrp{
+	width: 100%;
+}

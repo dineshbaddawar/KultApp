@@ -1,0 +1,261 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" controller="InstagramCommCompController">
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="showReplies" type="boolean" default="false"/>
+    <aura:attribute name="recordId" type="string" default="500VF000002G1QRYA0"/>
+    <aura:attribute name="isEditable" type="boolean" default="true"/>
+    <aura:attribute name="commentDescription" type="string" default=""/>
+    <aura:attribute name="commentedBy" type="string" default=""/>
+    <aura:attribute name="mainCommentId" type="string" default=""/>
+    <aura:attribute name="showSpinner" type="boolean" default="false"/>
+    <aura:attribute name="spinner" type="boolean" default="false"/>
+    <aura:attribute name="tweetReply" type="string" default=""/>
+    <aura:attribute name="selectedCommentValue" type="string" default=""/>
+    <aura:attribute name="selectedCommentRepliedBy" type="string" default=""/>
+    <aura:attribute name="selectedCommentId" type="string" default=""/>
+    <aura:attribute name="replyMessage" type="string" default=""/>
+    <aura:attribute name="relatedCommentList" type="List"/>
+    <aura:attribute name="relatedReplyList" type="List"/>
+    <aura:attribute name="paginationCommentList" type="List"/>
+    <aura:attribute name="index" type="integer" default=""/>
+    <aura:attribute name="typeOfPost" type="string" default=""/>
+    <aura:attribute name="label" type="string" default=""/>
+    <aura:attribute name="urlToPost" type="string" default=""/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!--  for Pagination    -->
+    <aura:attribute name="PageNumber" type="integer" default="1"/>
+    <aura:attribute name="TotalPages" type="integer" default="0"/>
+    <aura:attribute name="TotalRecords" type="integer" default="0"/>
+    <aura:attribute name="numberOfRecordsToBeShown" type="integer" default="5"/>
+    <aura:attribute name="RecordStart" type="integer" default="0"/>
+    <aura:attribute name="RecordEnd" type="integer" default="0"/>
+    <lightning:card >
+        
+        <div style = "border-style: solid;margin :1%">
+            <div style = "margin :1%">
+                <div style ="width :10%">
+                    <img src="{!$Resource.Instagram}"/>
+                </div>
+                <br/>
+                <aura:if isTrue="{!v.showSpinner}">
+                    <div class="exampleHolder">
+                        <lightning:spinner alternativeText="Loading" size="medium" />
+                    </div>
+                </aura:if>
+                <lightning:buttonGroup>
+                    <lightning:button label="View Replies" variant="brand-outline"   onclick="{!c.openModel}"/>
+                    <lightning:button label="Reply To Comment" variant="brand-outline"   onclick="{!c.openModel}"/>
+                    <lightning:button label="Refresh" variant="brand-outline"   onclick="{!c.refreshFeed}"/>
+                    <lightning:button label="Go to Post🔃" variant="brand-outline"   onclick="{!c.navigateToPost}"/>
+                </lightning:buttonGroup>
+                <br/>
+                <div style="margin-top:2%">
+                    <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered" > 
+                                <tr class="slds-line-height_reset slds-text-title_caps">
+                                    <th class="slds-is-resizable" scope="col" style="width: 30%;">
+                                        <div class="slds-truncate slds-wrap" title="Comment Description">
+                                            <b>Comment Description</b>
+                                        </div>
+                                    </th>
+                                    <th class="slds-is-resizable" scope="col">
+                                        <div class="slds-truncate" title="Comment Description">
+                                           <lightning:inputRichText disabled="true" value="{!v.commentDescription}" placeholder="Type.."/> 
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr class="slds-line-height_reset slds-text-title_caps">
+                                    <th class="slds-is-resizable" scope="col" style="width: 30%;">
+                                        <div class="slds-truncate" title="Commented By">
+                                            <b>Commented By</b>
+                                        </div>
+                                    </th>
+                                    <th class="slds-is-resizable" scope="col">
+                                        <div class="slds-truncate" title="Commented By">
+                                            {!v.commentedBy}
+                                        </div>
+                                    </th>
+                                </tr>
+                       
+                        
+                    </table>
+                </div>
+                
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    
+                     <aura:if isTrue="{!v.isModalOpen}">
+                        
+                        <!-- Modal/Popup Box starts here-->
+                        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                            <div class="slds-modal__container">
+                                <aura:if isTrue="{!v.spinner}">
+                                    <div aura:id="spinnerId" class="slds-spinner_container">
+                                        <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                                            <span class="slds-assistive-text">Loading...</span>
+                                            <div class="slds-spinner__dot-a"></div>
+                                            <div class="slds-spinner__dot-b"></div>
+                                        </div>
+                                    </div>
+                                </aura:if>
+                                <!-- Modal/Popup Box Header Starts here-->
+                                <header class="slds-modal__header">
+                                    
+                                    <lightning:buttonIcon iconName="utility:close"
+                                                          onclick="{! c.closeModel }"
+                                                          alternativeText="close"
+                                                          variant="bare-inverse"
+                                                          class="slds-modal__close"/>
+                                    <h1 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                        <b>
+                                            <aura:unescapedHtml value="{!v.commentDescription}"></aura:unescapedHtml> <br/>
+                                        </b>
+                                        by : @{!v.commentedBy}
+                                    </h1>
+                                    
+                                </header>
+                                
+                                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                                    <lightning:textarea value="{!v.replyMessage}" placeholder="Please Enter you reply"/>
+                                </div>
+                                <!--Modal/Popup Box Footer Starts here-->
+                                <footer class="slds-modal__footer">
+                                    <lightning:button variant="neutral"
+                                                      label="Cancel"
+                                                      title="Cancel"
+                                                      onclick="{! c.closeModel }"/>
+                                    <lightning:button variant="brand"
+                                                      label="REPLY"
+                                                      title="REPLY"
+                                                      onclick="{!c.postComment}"/>
+                                </footer>
+                            </div>
+                        </section>
+                        <div class="slds-backdrop slds-backdrop_open"></div>
+                    </aura:if>
+                    
+                    <aura:if isTrue="{!v.showReplies}">
+                        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+                            <div class="slds-modal__container">
+                                <!-- Modal/Popup Box Header Starts here-->
+                                <header class="slds-modal__header">
+                                    <lightning:buttonIcon iconName="utility:close"
+                                                          onclick="{! c.closeModel }"
+                                                          alternativeText="close"
+                                                          variant="bare-inverse"
+                                                          class="slds-modal__close"/>
+                                    <h1 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                        <b>
+                                            List of Comments!!
+                                        </b>
+                                    </h1>
+                                </header>
+                                
+                                <lightning:card>
+                                    <aura:if isTrue="{!v.showSpinner}">
+                                        <div class="exampleHolder">
+                                            <lightning:spinner alternativeText="Loading" size="large" />
+                                        </div>
+                                    </aura:if>
+                                    <aura:if isTrue="{!v.relatedReplyList.length > 0}">
+                                        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                            <thead>
+                                                <tr class="slds-line-height_reset slds-text-title_caps">
+                                                    <th  scope="col">
+                                                        <div class="slds-truncate" title="Comment">
+                                                            Comment
+                                                        </div>
+                                                    </th>
+                                                    <th   scope="col">
+                                                        <div class="slds-truncate" title=" Replied by">
+                                                            Replied by
+                                                        </div>
+                                                    </th>
+                                                    <th  scope="col">
+                                                        <div class="slds-truncate" title="Date">
+                                                            Date
+                                                        </div>
+                                                    </th>
+                                                    <th  scope="col">
+                                                        <div class="slds-truncate" title="Time">
+                                                            Time
+                                                        </div>
+                                                    </th>
+                                                    <th  scope="col">
+                                                        <div class="slds-truncate" title="Write your Comments..">
+                                                            Write your Comments..
+                                                        </div>
+                                                    </th>
+                                                    <th scope="col">
+                                                        <div class="slds-truncate" title="Reply">
+                                                            
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            
+                                            <tbody>
+                                                <aura:iteration items="{!v.paginationCommentList}" var="acc" indexVar="index">
+                                                    <tr class="slds-hint-parent" id = "{!index}">
+                                                        <th data-label="Name" scope="row">
+                                                            {!acc.text}
+                                                        </th>
+                                                        <td data-label="Message">
+                                                            <b>
+                                                                {!acc.username}
+                                                            </b>
+                                                        </td>
+                                                        
+                                                        <td data-label="Message">
+                                                            {!acc.postDate}
+                                                        </td>
+                                                        <td data-label="Message">
+                                                            {!acc.postTime}
+                                                        </td>
+                                                        <td>
+                                                            <div class="slds-modal__content" id="modal-content-id-1">
+                                                                <lightning:textarea value="{!acc.replyMessage}" placeholder="Type.."/>
+                                                            </div>
+                                                        </td>
+                                                        <td data-label="Message">
+                                                            <lightning:button variant="brand-outline" value="{!index}" label="Reply" title="Brand action" onclick="{!c.replyToComment}" />
+                                                        </td>
+                                                    </tr>
+                                                </aura:iteration>
+                                            </tbody>
+                                        </table>
+                                        <aura:set attribute="else">
+                                            <div class="comment">
+                                                <p>No replies on this comment!!</p>
+                                            </div>
+                                        </aura:set>
+                                    </aura:if>
+                                    
+                                </lightning:card>
+                                
+                                <footer class="slds-modal__footer">
+                                    <div class="slds-clearfix">
+                                        <div class="slds-page-header" role="banner"> 
+                                            <div class="slds-float_right">  
+                                                <lightning:button disabled="{!v.PageNumber == 1}" variant="brand" aura:id="prevPage" label="Prev" onclick="{!c.handlePrev}" />            
+                                                <lightning:button disabled="{!v.PageNumber == v.TotalPages}" aura:id="nextPage" variant="brand" label="Next" onclick="{!c.handleNext}"/>
+                                                <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{! c.closeModel }"/>
+                                            </div>
+                                            <div style="margin-top: 0.5%;">
+                                                <p class="slds-page-header__title">{!v.RecordStart}-{!v.RecordEnd} of {!v.TotalRecords} | Page {!v.PageNumber} of {!v.TotalPages}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </footer>
+                            </div>
+                        </section>
+                        <div class="slds-backdrop slds-backdrop_open"></div>
+                    </aura:if>
+                    
+                    <br/>
+                    <br/>
+                    
+                </div>
+            </div>
+        </div>
+    </lightning:card>
+</aura:component>

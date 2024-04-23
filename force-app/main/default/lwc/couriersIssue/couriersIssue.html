@@ -1,0 +1,7 @@
+<template>
+    <template if:true={areDetailsVisible}>
+        <template for:each={casesResult} for:item="cases" for:index="index">
+            <lightning-input key={cases.Id} type="text" label="Customer State Code" value={cases.Address_With_Pin_Code__Street__s}></lightning-input>
+        </template>
+    </template>
+</template>

@@ -1,0 +1,199 @@
+:root {
+    --primary: #082E44;
+    --purple: #5C0C9C;
+    --golden: #A28C4F;
+    --black: #262626;
+    --white: #fff;
+    --grey: #F1F0F0;
+    --lightGrey: #EBEBEB;
+    --yellow: #ffb92c;
+}
+.mainContainer{
+    width:976px; 
+    height:674px; 
+    top:104px; 
+    margin-left:1%;
+}
+.login-form {
+    width: 976px;
+    margin-left: 1%;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    position: relative;
+    height: 611px;
+    margin-top: 1%;
+}
+.login-form h2 {
+    color: var(--primary);
+    text-align: center;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 4rem 0 2.5rem 0;
+    text-transform: uppercase;
+}
+.checkAvailability-btn {
+    background: var(--primary);
+    margin-top: 12%;
+    color: var(--white);
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    padding: 0.75rem 2rem;
+    border: none;
+    -moz-border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0 0 rgba(0, 0, 0, 0.64);
+    transition: all 0.5s ease;
+    display: block;  
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.checkAvailability-btn:hover {
+    background: var(--yellow);
+}     
+.TopTitle {
+    color: #082E44;
+    font-size: 24px; 
+    font-weight: 500; 
+    word-wrap: break-word; 
+    padding: 1%;                                          
+}
+.SuccessfullyBooked{
+   text-align: center; 
+   color: black; 
+   font-size: 20px; 
+   font-weight: 500;
+   word-wrap: break-word;
+   margin-top: -5%;
+ }
+.SuccessfullyCard {
+    width: 553px;
+    height: 427px;
+    margin-left: 1%;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    position: relative;
+    margin-top: 1%;
+    overflow: hidden;
+    justify-content: center;
+}
+.buttonclass{
+   margin-top:-2%;
+   
+   }
+.writeButton {
+    background: var(--primary);
+    color: var(--white);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    padding: 0.75rem 2rem;
+    border: none;
+    -moz-border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0 0 rgba(0, 0, 0, 0.64);
+    transition: all 0.5s ease;
+    display: block;  
+    position: absolute;
+    left: 48%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.writeButton:hover {
+    background: var(--yellow);
+}    
+.tableHead{
+    background-color:#082E44;
+    color:#ffffff;
+ 
+}
+ 
+.tableBody{
+    border-radius:4px;
+    background-color:#fff;
+}
+.Status{
+    background-color:#FF9820;
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: 0.150rem 0.70rem;
+    font-size: 1rem;
+	border-radius: 25px;
+}
+.Description{
+    margin-left: 3%;
+    line-height:30px;
+}
+ 
+.TopTitle {
+    color: #082E44;
+    font-size: 24px; 
+    font-weight: 500; 
+    word-wrap: break-word; 
+    padding: 1%;                                          
+}
+table {
+   border-collapse:separate;
+   border-spacing:0 11px;
+   margin-top:-11px;
+}
+ 
+td {
+   border:2px solid Chartreuse;
+   border-style:solid none;
+   padding:11px;
+   background-color:yellow;
+}
+ 
+td:first-child {
+   border-left-style:solid;
+   border-top-left-radius:11px;
+   border-bottom-left-radius:11px;
+}
+ 
+td:last-child {
+   border-right-style:solid;
+   border-bottom-right-radius:11px;
+   border-top-right-radius:11px;
+}
+th:first-child {
+   border-left-style:solid;
+   border-top-left-radius:11px;
+   border-bottom-left-radius:11px;
+}
+ 
+th:last-child {
+   border-right-style:solid;
+   border-bottom-right-radius:11px;
+   border-top-right-radius:11px;
+}
+.dataTable{
+    width: 976px; 
+    margin-left: 1%;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    position: relative;
+    margin-top: 3%;
+    }

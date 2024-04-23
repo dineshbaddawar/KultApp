@@ -1,0 +1,27 @@
+<template>
+    <lightning-quick-action-panel header="Return To Origin">
+
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="horizontal-small">
+                <div class="custom-box">
+                    <lightning-combobox name="Reason_for_RTO__c" label="Reason for RTO" 
+                                        placeholder="Select Reason for RTO" options={optionsCategory} required
+                                        onchange={handleInputChange}></lightning-combobox>
+                </div>
+            </lightning-layout-item>
+            <!-- <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="horizontal-small">
+                <div class="custom-box">
+                    <lightning-combobox name="RTO_Reso__c" label="RTO Resolution"
+                                        placeholder="Select RTO Resolution" options={lstRecordTypes} required
+                                        onchange={handleInputChange}></lightning-combobox>
+                </div>
+            </lightning-layout-item> -->
+        </lightning-layout>
+        <div class="slds-align_absolute-center" style="height:5rem">
+            <lightning-button variant="Neutral" label="Cancel" onclick={handleCancel}></lightning-button>&nbsp;&nbsp;
+            <lightning-button variant="Brand" label="Save" onclick={handleClick}></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+
+    
+</template>

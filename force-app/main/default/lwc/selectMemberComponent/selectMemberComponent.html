@@ -1,0 +1,32 @@
+<template>
+    <lightning-quick-action-panel header="Share Record">
+        <div class="slds-box">
+                
+            <lightning-combobox
+                                name="Select Member"
+                                label="Select Member"
+                                value={selectedProfile}
+                                placeholder="Select Profile..."
+                                options={options}
+                                onchange={handleProfileChange} >
+            </lightning-combobox>
+            <lightning-combobox 
+                                name="Select User"
+                                label="Select a User"
+                                placeholder="Select User..."
+                                value={userId}
+                                onchange={handleUserChange}
+                                options={userOptions}>
+            </lightning-combobox>
+        
+        </div>
+
+        <br/>
+        <br/>
+
+        <div class="slds-align_absolute-center">
+            <lightning-button variant="brand" label="Save" title="Primary action" onclick={handleSubmit} class="slds-m-left_x-small"></lightning-button>
+            <lightning-button variant="Destructive" label="Cancel" title="Primary action" onclick={handleCancel} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </lightning-quick-action-panel> 
+</template>

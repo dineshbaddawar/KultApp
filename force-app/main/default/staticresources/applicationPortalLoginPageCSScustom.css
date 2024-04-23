@@ -1,0 +1,316 @@
+:root {
+    --primary: #082E44;
+    --purple: #5C0C9C;
+    --golden: #A28C4F;
+    --black: #262626;
+    --white: #fff;
+    --grey: #F1F0F0;
+    --lightGrey: #EBEBEB;
+    --yellow: #ffb92c;
+}
+*{
+	font-family:'Ubuntu';
+        }
+body {
+    background: var(--lightGrey);
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+.uwaLogo{
+	background: white;
+    width: 188px;
+    height: 64.12px;
+    margin-top: 66px;
+}
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+.form-control {
+    background: var(--grey);
+    padding: 0.75rem 3rem 0.75rem 1.5rem;
+    -moz-border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+}
+.form-control:focus {
+    color: #212529;
+    background: var(--grey);
+    border: none;
+    outline: 0;
+    box-shadow: none;
+}
+.primary-btn {
+    background: var(--primary);
+    width: 100%;
+    color: var(--white);
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    padding: 0.75rem 2rem;
+    border: none;
+    -moz-border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0 0 rgba(0, 0, 0, 0.64);
+    transition: all 0.5s ease;
+    display: block;
+}
+.primary-btn:hover {
+    background: var(--golden);
+}
+.loginImage{
+	height:100vh;   <!--832px--> 
+	<!--width:640px-->
+}
+.login {
+    min-height: 100vh;
+    overflow: hidden;
+	display:flex;
+                                                                                
+}
+.login .row {
+    min-height: 100vh;
+}
+
+.login-form {
+    width: 85%;
+    margin: 0 auto;
+    min-height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+.login-form h2 {
+    color: var(--primary);
+    text-align: center;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 6rem 0 2.5rem 0;
+    text-transform: uppercase;
+}
+.login-form label {
+    color: #000;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 0.5rem;
+}
+.login-form .password-icon {
+    position: absolute;
+    z-index: 1;
+    top: 2.8rem;
+    right: 1.25rem;
+    cursor: pointer;
+}
+
+/* ----------------------- Dashboard ----------------------- */
+.header {
+    background: var(--primary);
+    padding: 0.875rem 2rem;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+.header li {
+    color: var(--white);
+    font-size: 1.25rem;
+    margin: 0 0 0 1rem;
+    display: inline-block;
+}
+.header li i {
+    cursor: pointer;
+}
+.header li .dropdown-toggle {
+    background: transparent;
+    padding: 0;
+    color:white;                                                                                                                                        
+}
+.wrapper {
+    width: 100%;
+    min-height: calc(100vh - 4.5rem);
+}
+.sidebar {
+    background: var(--white);
+    width: 15rem;
+    min-height: calc(100vh - 3.625rem);
+    padding: 2.5rem 0 0 0;
+    overflow: auto;
+    box-sizing: border-box;
+    align-content: space-between;
+    flex-direction: column;
+    flex-flow: row wrap;
+    display: flex;
+}
+.sidebar ul {
+    width: 100%;
+	padding:0;
+}
+.sidebar li {
+    margin: 0.5rem 0;
+}
+.sidebar li .accordion-item {
+    border: none;
+}
+.sidebar li a, .sidebar li .accordion-item .accordion-button {
+    background: var(--white);
+    padding: 0.625rem 1.5rem 0.625rem 1.25rem;
+    color: var(--black);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    display: block;
+    transition: all 0.5s ease;
+    border-left: 0.25rem solid transparent;
+    font-family: 'DM Sans', sans-serif;
+}
+.sidebar li a svg {
+    margin-right: 0.5rem;
+}
+   #collapseFinancialServices > .accordion-body > ul > li > a:hover {
+    /* Add your desired styles here */
+    background-color: rgb(242, 225, 255); /* Change to the desired background color on hover */
+    /* Add any other styles you want to apply on hover */
+}                                                                                                                                                                     
+                                                                                                                                                                        
+.sidebar li:hover a, .sidebar li.active a {
+    background: var(--golden);
+    color: var(--white);
+    font-weight: 500;
+    border-left: 0.25rem solid var(--primary);
+}
+.sidebar li:hover a svg path, .sidebar li.active a svg path {
+    fill: var(--white);
+    stroke: var(--white);
+}
+ .checkAvailability-btn {
+    background: var(--primary);
+    margin-top: 8%;
+    color: var(--white);
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    padding: 0.75rem 2rem;
+    border: none;
+    -moz-border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0 0 rgba(0, 0, 0, 0.64);
+    transition: all 0.5s ease;
+    display: block;  
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.checkAvailability-btn:hover {
+    background: var(--yellow);
+}                                                                                                                                                                                                                       
+.rememMe{ width:100%;
+
+
+.main-container {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      min-height: 128px;
+      max-width: 976px;
+      justify-content: center;
+    }
+    
+    .img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .header {
+      position: relative;
+      border-radius: 50%;
+      box-shadow: 8px 8px 0px 0px #a28c4f;
+      background-color: var(--Dark-Blue, #082e44);
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      padding: 37px 80px 37px 39px;
+    }
+    
+    @media (max-width: 991px) {
+      .header {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+		
+    }
+    
+    .heading {
+      color: #fff;
+      font: 700 24px Poppins, sans-serif;
+    }
+    
+    @media (max-width: 991px) {
+      .heading {
+        max-width: 100%;
+      }
+    }
+    
+    .subheading {
+      color: #fff;
+      margin-top: 16px;
+      font: 500 16px/150% Poppins, sans-serif;
+    }
+    
+    @media (max-width: 991px) {
+      .subheading {
+        max-width: 100%;
+      }
+    }               
+}
+
+
+.cancelButton{
+	background-Color:var(--white);
+	color:var(--primary);
+	width:202px;
+	height:55px;
+	border:1px solid var(--primary);
+	border-radius:8px;
+	gap:10px;
+	font-weight:500;
+}
+.continueButton{
+	background-Color:var(--primary);
+	color:var(--white);
+	width:202px;
+	height:55px;
+	border:1px solid var(--primary);
+	border-radius:8px;
+	gap:10px;
+	font-weight:500;
+}
+.inputCusto{
+	width:420px;
+	height:48px;
+	border: 1px solid #ddd;
+	border-radius:8px;
+}

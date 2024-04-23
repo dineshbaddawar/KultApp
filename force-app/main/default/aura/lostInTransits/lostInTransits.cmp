@@ -1,0 +1,98 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global"  controller = "OOSHelper">
+    <!-- <aura:component implements="force:lightningQuickActionWithoutHeader,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" 
+                       controller = "OOSHelper"> -->
+    <aura:html tag="style">
+.cuf-content {
+padding: 0 0rem !important;
+}
+.slds-p-around–medium {
+padding: 0rem !important;
+}
+.slds-modal__content{
+overflow-y:hidden !important;
+height:unset !important;
+max-height:unset !important;
+}
+</aura:html>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name ="caseRec" type="sObject" default="{'sObjectType':'Case'}"/>
+    <aura:attribute name="oliList" type="OrderItem[]"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="showOrderItemList" type="Boolean" default="false"/>
+    
+    <div class="modal-header slds-modal__header slds-size_1-of-1">
+    	<h2>Create Duplicate Order</h2>
+    </div>
+    
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="" id="modal-content-id-1">
+                        <lightning:layout pullToBoundary="medium">
+                            <lightning:layoutItem padding="around-small" size="6">
+                                <div>
+                                    <p><b>Case No: &nbsp;</b> {!v.caseRec.CaseNumber}</p>
+                                </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" size="6">
+                                <div>
+                                    <p><b>Order No: &nbsp;</b> {!v.caseRec.OrderId__r.OrderNumber}</p>
+                                </div>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                        <lightning:layout pullToBoundary="medium">
+                            <lightning:layoutItem padding="around-small" size="6">
+                                <div>
+                                    <p><b>Order Date: &nbsp;</b> {!v.caseRec.Order_Date__c}</p>
+                                </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem padding="around-small" size="6">
+                                <div>
+                                    <p><b>Order Status: &nbsp;</b> {!v.caseRec.OrderId__r.Status}</p>
+                                </div>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    <lightning:input label="Reason For Duplicate Order" value="{!v.caseRec.Reason_For_Duplicate_Order}" required="true" style="margin-bottom:20px;"/>
+                    <aura:if isTrue="{!v.showOrderItemList}">
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width:50%;">
+                                        Product Name
+                                    </th>
+                                    <th style="width:25%;">
+                                        Order Qty
+                                    </th>
+                                    <th style="width:25%;">
+                                        Re-Order Qty
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <aura:iteration items="{!v.oliList}" var="oli">
+                                    <td>
+                                    	{!oli.Product2.Name}
+                                    </td>
+                                    <td>
+                                    	{!oli.Quantity}
+                                    </td>
+                                    <td>
+                                        <lightning:input label="" value="{!oli.newQty}"/>
+                                    </td>
+                                </aura:iteration>
+                            </tbody>
+                        </table>
+                    </aura:if>
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer>
+                    <div class="slds-col modal-footer slds-modal__footer">
+                    	<lightning:button variant="neutral"
+                                      label="Cancel"
+                                      title="Cancel"
+                                      onclick="{! c.closeModel }"/>
+                    <lightning:button variant="brand"
+                                      label="Save"
+                                      title="Save"
+                                      onclick="{!c.submitDetails}"/>
+                    </div>
+                </footer>	
+</aura:component>

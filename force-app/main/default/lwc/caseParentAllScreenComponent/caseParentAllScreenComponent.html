@@ -1,0 +1,1026 @@
+<template>
+      <!---RECORD TYPE ===> BRAND -->
+      <template lwc:if={isBrandRecordType}>
+            <lightning-card>
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#701CC3;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>BRAND</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" alt="Box logo" src={brandLogo} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+
+            </lightning-card>
+      </template>
+
+      <!---RECORD TYPE ===> CAMPAIGN -->
+
+      <template lwc:if={isCampaignReviewRecordType}>
+            <lightning-card>
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#0F8C1B;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>CAMPAIGN/REVIEWS</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" alt="Box logo"
+                                          src={campaignLogo} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+            </lightning-card>
+      </template>
+
+
+      <!---RECORD TYPE ===> CONTENT -->
+
+      <template lwc:if={isContentRecordType}>
+            <lightning-card>
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#858714;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>CONTENT</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" alt="Box logo" src={contentLogo} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+
+            </lightning-card>
+      </template>
+
+
+      <!---RECORD TYPE ===> CUSTOMER PROFILE -->
+      <template lwc:if={isCustomerProfileRecordType}>
+            <lightning-card>
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#0071BC;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>CUSTOMER PROFILE</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" alt="Box logo" src={userLogo} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+
+            </lightning-card>
+      </template>
+
+
+      <!---RECORD TYPE ===> GENERAL QUERY -->
+
+      <template lwc:if={isGeneralQueryRecordType}>
+            <lightning-card>
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#138289;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>GENERAL QUERIES</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" alt="Box logo" src={queryLogo} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+
+            </lightning-card>
+      </template>
+
+      <!---RECORD TYPE ===> MARKETING -->
+      <template lwc:if={isMarketingRecordType}>
+            <lightning-card>
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#792D68;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>MARKETING</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" alt="Box logo"
+                                          src={marketingLogo} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+
+            </lightning-card>
+      </template>
+
+      <!---RECORD TYPE ===> ORDER RELATED -->
+      <template lwc:if={isOrderRecordType}>
+            <lightning-card>
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#875214;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>ORDER RELATED</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" alt="Box logo" src={orderLogo} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+
+            </lightning-card>
+      </template>
+
+      <!---RECORD TYPE ===> PERFUME CATEGORY -->
+      <template lwc:if={isPerfumeCategoryRecordType}>
+            <lightning-card>
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#371ECB;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>PERFUME CATEGORY</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" alt="Box logo" src={perfumeLogo} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+            </lightning-card>
+      </template>
+
+
+      <!---RECORD TYPE ===> POLICY & FAQ -->
+
+      <template lwc:if={isPolicyFAQRecordType}>
+            <lightning-card>
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#A5251B;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>POLICY & FAQ's</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" alt="Box logo" src={faqLogo} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+
+            </lightning-card>
+      </template>
+
+      <!---RECORD TYPE ===> PRE ORDER -->
+
+      <template lwc:if={isPreOrderRecordType}>
+            <lightning-card>
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#502D79;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>PREORDER</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" alt="Box logo"
+                                          src={preOrderLogo} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+
+            </lightning-card>
+      </template>
+
+      <!---RECORD TYPE ===> PRICING -->
+
+      <template lwc:if={isPricingRecordType}>
+            <lightning-card>
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#C66F00;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>PRICING</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" alt="Box logo" src={pricingLogo} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+
+            </lightning-card>
+      </template>
+
+      <!---RECORD TYPE ===> REFUND -->
+
+      <template lwc:if={isRefundRecordType}>
+            <lightning-card>
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#4BC076;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>REFUND</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" alt="Money logo" src={moneybag2} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+
+            </lightning-card>
+      </template>
+      <!---RECORD TYPE ===> SERVICE RELATED -->
+
+      <template lwc:if={isServiceRealtedRecordType}>
+
+            <lightning-card>
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#171487;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>SERVICE RELATED</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" alt="Box logo" src={serRelLogo} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+
+            </lightning-card>
+      </template>
+
+      <!---RECORD TYPE ===> TECH -->
+      <template lwc:if={isTechRecordType}>
+            <lightning-card>
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#20A8BF;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>TECH</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" align="middle" alt="Box logo"
+                                          src={techLogo} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+                              </div>
+                        </div>
+                  </div>
+
+            </lightning-card>
+      </template>
+
+      <!---RECORD TYPE ===> ORDER RELATED ISSUES -->
+      <template lwc:if={isOrderRelatedIssues}>
+            <lightning-card>
+
+                  <div style="border-radius: 30px;">
+                        <div class="slds-grid" style="background-color:#9A79FF;">
+                              <div class="slds-col slds-size_9-of-12 slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+                                    <p style="color:white;padding: 5px 20px 5px;">Case Record Type:</p>
+                                    <p style="color:white;padding: 5px 20px 5px;"><b>ORDER RELATED ISSUES</b></p>
+                              </div>
+                              <div class="slds-col slds-size_3-of-12" style="padding-top: 1em;padding-bottom: 1em;">
+                                    <img style="max-height: 100px;padding-top: 1em;" alt="Box logo" src={OrderBox} />
+
+                              </div>
+                        </div>
+                        <div class="slds-grid slds-grid_vertical">
+                              <div class="slds-col slds-text-heading_medium"
+                                    style="padding-top: 1em;padding-bottom: 1em;">
+
+
+                                    <table style="width:100%;">
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Order No:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{orderNumber}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Account Name:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{accountName}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Origin:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseOrigin}</div>
+                                                </td>
+                                          </tr>
+                                          <tr>
+                                                <th style="padding: 5px 20px 5px;">Case Sub-Status:</th>
+                                                <td>
+                                                      <div class="slds-truncate">{caseSubStatus}</div>
+                                                </td>
+                                          </tr>
+                                          <template if:true={isshowRefund}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Refund reason:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{refundReason}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                          <template if:true={CaseIsNotNull}>
+                                                <tr>
+                                                      <th style="padding: 5px 20px 5px;">Type Of Case:</th>
+                                                      <td>
+                                                            <div class="slds-truncate">{caseType}</div>
+                                                      </td>
+                                                </tr>
+                                          </template>
+                                    </table>
+
+                              </div>
+                        </div>
+                  </div>
+
+            </lightning-card>
+      </template>
+
+
+</template>

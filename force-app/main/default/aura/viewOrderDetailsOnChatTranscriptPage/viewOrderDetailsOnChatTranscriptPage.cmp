@@ -1,0 +1,85 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" 
+                controller="viewOrderDetailsOnChatController">
+    <aura:attribute name="orderRec" type="sObject" default="{'sObjectType' : 'Order'}"/>
+    <aura:attribute name="orderLineItems" type="list"/>
+    
+    <aura:attribute name="isOrderTaggedOnCase" type="boolean" default="false"/>
+    <aura:attribute name="orderNotFound" type="boolean" default="true"/>
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    
+    <lightning:card>
+        <aura:if isTrue="{!v.isOrderTaggedOnCase}">
+            <lightning:layout multipleRows="true">
+                <lightning:layoutItem padding="around-small" size="12">
+                    <div class="page-section page-header">
+                        <h2 style="text-align: center;
+                                   font-size: large;
+                                   font-weight: 700;">Order Details</h2>
+                    </div>
+                    <hr style="margin: 6px;"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="around-small" size="12">
+                    <lightning:layoutItem padding="horizontal-medium" size="12">
+                        <b>Order Number: </b> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;{!v.orderRec.OrderNumber}
+                    </lightning:layoutItem>
+                    <lightning:layout>
+                        <lightning:layoutItem padding="horizontal-medium" size="5">
+                            <b>Order Status: </b> &nbsp;
+                        </lightning:layoutItem>
+                        <lightning:layoutItem padding="horizontal-medium" size="5">
+                            {!v.orderRec.Status}
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                    <lightning:layout>
+                        <lightning:layoutItem padding="horizontal-medium" size="5">
+                            <b>Customer Name: </b> &nbsp;
+                        </lightning:layoutItem>
+                        <lightning:layoutItem padding="horizontal-medium" size="5">
+                            {!v.orderRec.Account.Name}
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                    <lightning:layout>
+                        <lightning:layoutItem padding="horizontal-medium" size="5">
+                            <b>Order Amount: </b> &nbsp;
+                        </lightning:layoutItem>
+                        <lightning:layoutItem padding="horizontal-medium" size="5">
+                            {!v.orderRec.TotalAmount}
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                    <lightning:layout>
+                        <lightning:layoutItem padding="horizontal-medium" size="5">
+                            <b>Order Paid Amount: </b> &nbsp;
+                        </lightning:layoutItem>
+                        <lightning:layoutItem padding="horizontal-medium" size="5">
+                            {!v.orderRec.Paid_Amount__c}
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </lightning:layoutItem>
+            </lightning:layout>
+        <table class="slds-table slds-table_bordered slds-table_fixed-layout">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration  items="{!v.orderLineItems}" var="curr">
+                    <tr>
+                        <td>{!curr.Product2.Name}</td>
+                        <td>{!curr.Quantity}</td>
+                        <td>{!curr.StatusCode}</td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+        </aura:if>
+        <aura:if isTrue="{!v.orderNotFound}">
+            <h1 style="text-align: center;
+                       font-size: large;
+                       font-weight: 700;">Please Input Order Number</h1>
+        </aura:if>
+    </lightning:card>
+</aura:component>

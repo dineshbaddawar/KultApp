@@ -1,0 +1,16 @@
+<template>
+	<lightning-quick-action-panel header="Lost In Transit">
+
+		<lightning-combobox label="Select Reason For Dealy" options={LostInOption} onchange={handelreLostInChange} required>
+		</lightning-combobox>
+
+
+		<div class="slds-m-top_medium slds-text-align_center">
+			<lightning-button type="submit" label="Cancel" variant="neutral" onclick={handleCancel}></lightning-button>
+			&nbsp; &nbsp;
+			<lightning-button type="submit" label="Save" variant="brand" onclick={handleSave}> </lightning-button>
+		</div>
+
+	</lightning-quick-action-panel>
+
+</template>

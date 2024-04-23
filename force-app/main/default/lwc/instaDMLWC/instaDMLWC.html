@@ -1,0 +1,50 @@
+<template>
+    <div style="height: 500px; overflow-y: auto;">
+        <div class="slds-chat-bookend">
+            <span class="slds-icon_container slds-icon-utility-chat slds-chat-icon"></span>
+            <p>Chat started by <b>{senderName}</b> • {chatInitiatedTime}</p>
+        </div>
+        <template if:true={showSpinner}>
+            <div class="exampleHolder">
+                <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+            </div>
+        </template>
+        <template for:each={chatMessages} for:item="message">
+            <section key={message.id} role="log" class="slds-chat">
+                <ul class="slds-chat-list">
+                    <template lwc:if={message.isInbound}>
+                        <li key={message.id} class='slds-chat-listitem slds-chat-listitem_inbound'>
+                            <div class="slds-chat-message">
+                                <div class="slds-chat-message__body">
+                                    <div class='slds-chat-message__text slds-chat-message__text_inbound'>
+                                        <span>{message.text}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </template>
+                    <template if:false={message.isInbound}>
+                        <li key={message.id} class='slds-chat-listitem slds-chat-listitem_outbound'>
+                            <div class="slds-chat-message">
+                                <div class="slds-chat-message__body">
+                                    <div class='slds-chat-message__text slds-chat-message__text_outbound'>
+                                        <span>{message.text}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </template>
+                    
+                </ul>
+            </section>
+        </template>
+        <div class="slds-p-around_medium">
+            <lightning-textarea label="Reply" value={messageContext} placeholder="Type your reply here..." onchange={handleMessageChange}></lightning-textarea>
+            <br/>
+            <lightning-button-group>
+                <lightning-button label="Refresh" onclick={refreshChat}></lightning-button>
+                <lightning-button label="Send" onclick={handleSendReply}></lightning-button>
+            </lightning-button-group>
+         </div>
+    </div>
+</template>

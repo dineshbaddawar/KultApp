@@ -1,0 +1,89 @@
+:root {
+    --primary: #082E44;
+    --purple: #5C0C9C;
+    --golden: #A28C4F;
+    --black: #262626;
+    --white: #fff;
+    --grey: #F1F0F0;
+    --lightGrey: #EBEBEB;
+    --yellow: #ffb92c;
+	--red:#E62C46;
+}
+*{
+    font-family: 'DM Sans';
+    
+}
+div{
+    margin-bottom:0.6%;
+	margin-top:1%;
+}
+.mainHeading{
+    text-align:center;
+    color:var(--primary);
+    font-size:24px;
+    font-weight:700;
+    
+}
+.textHeads{
+	font-weight:400;
+    font-size:16px;
+}
+.subHeads{
+    font-weight:500;
+    font-size:20px;
+}
+.mainSubHead{
+    font-weight:700;
+    font-size:16px;
+    Line-height:26.04px;
+}
+.innerSubHeads{
+    font-weight:400;
+    font-size:14px;    
+}
+.align{
+    display:flex;
+}
+.previousButton{
+    background-color:color:var(--white);
+    color:var(--primary);
+    border:1px solid var(--primary);
+    border-radius:8px;
+    width:148px;
+    height:40px;
+	padding: 7px 32px 7px 32px;
+}
+.draftButton{
+    background-color:var(--primary);
+    color:var(--white);
+    border:1px solid var(--primary);
+    border-radius:8px;
+    width:148px;
+    height:40px;
+	padding: 7px 32px 7px 32px;
+                                                                        
+}
+.nextButton{
+    background-color:var(--primary);
+    color:var(--white);
+    border:1px solid var(--primary);
+    border-radius:8px;
+    width:148px;
+    height:40px;
+	padding: 7px 32px 7px 32px;
+}
+.btnGroup{
+    text-align:center;
+    gap:24px;
+}
+.buttonTypography{
+    font-family:'Ubuntu';
+	font-size:14px;
+	font-weight:500;
+	line-height: 16.09px;
+}
+.asterisk{
+	font-weight:700;
+	color:var(--red);
+	font-size:16px;
+}

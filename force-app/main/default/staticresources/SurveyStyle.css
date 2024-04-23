@@ -1,0 +1,38 @@
+:root {
+    --primary: #082E44;
+    --purple: #5C0C9C;
+    --golden: #A28C4F;
+    --black: #262626;
+    --white: #fff;
+    --grey: #F1F0F0;
+    --lightGrey: #EBEBEB;
+    --yellow: #ffb92c;
+	--cardBorder:#ddd;
+}
+.mainHeading{
+	color:(--primary);
+	font-size:24px;
+	font-weight:700;
+}
+.align{
+	text-align:center;
+}
+.submitButton{
+	width:132px;
+	height:40px;
+	font-size:14px;
+	font-weight:500;
+	color:var(--white);
+	background:var(--primary);
+	border: 1px solid var(--primary);
+	border-radius:6px;
+                        
+}
+
+.header{
+	font-size:18px;
+	font-weight:500;
+}
+.text-danger {
+    color: #ff5c75 !important;
+}                                            

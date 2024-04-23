@@ -1,0 +1,51 @@
+<template>
+<lightning-card title="Order Detail Items">
+<div class="slds-box">
+<table class="slds-table slds-table_bordered slds-table_cell-buffer">
+      <thead>
+            <tr>
+                  <th scope="col" style="background-color:#701CC3;color:white;">
+                  <div class="slds-truncate" title="Product Name">Product Name</div>
+                  </th>
+                  <th scope="col" style="background-color:#701CC3;color:white;">
+                  <div class="slds-truncate" title="Quantity">Quantity</div>
+                  </th>
+                  <!-- <th scope="col" style="background-color:#701CC3;color:white;">
+                  <div class="slds-truncate" title="Unit Price">Unit Price</div>
+                  </th>
+                  <th scope="col" style="background-color:#701CC3;color:white;">
+                  <div class="slds-truncate" title="Total Price">Total Price</div> -->
+            </th>
+            </tr>
+      </thead> 
+      <tbody>
+      <template if:true={orderLineItems}>
+          <template for:each={orderLineItems} for:item="item">
+            <tr key={item.Id} class="slds-hint-parent">
+                  <td data-label="Product Name">
+                        <div class="slds-truncate" title={item.Product2.Name}>{item.Product2.Name}</div>
+                  </td>
+                  <td data-label="Quantity">
+                        <div class="slds-truncate" title={item.Quantity}>{item.Quantity}</div>
+                  </td>
+                  <!-- <td data-label="Unit Price">
+                        <div class="slds-truncate" title={item.UnitPrice}>{item.UnitPrice}</div>
+                  </td>
+                  <td data-label="Total Price">
+                        <div class="slds-truncate" title={item.TotalPrice}>{item.TotalPrice}</div>
+                  </td> -->
+            </tr>
+      </template>
+      <template if:false={orderLineItems}>
+            <tr>
+                <td colspan="4">
+                    <div class="slds-text-align_center">No order line items found</div>
+                </td>
+            </tr>
+        </template>
+      </template>
+      </tbody>           
+</table>
+</div>
+</lightning-card>
+</template>

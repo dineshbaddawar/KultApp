@@ -1,0 +1,178 @@
+<template>
+
+    <template if:true={show1stPage}>
+        <div>
+            <lightning-card title="Select Order">
+
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="12" padding="horizontal-small">
+                        <div class="custom-box">
+                            <lightning-record-picker label="Order" placeholder="Select Order..." name="selectedOrder"
+                            object-api-name="Order" onchange={handleChangeInPicker}>
+                        </lightning-record-picker>
+                        <template if:true={orderHasItemAvailable}>
+                            <div class="slds-scrollable_x" style="height:auto;width:100%" tabindex="0">
+                                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+        
+                                    <thead>
+                                        <tr class="slds-text-title_caps">
+                                            <th scope="col">
+                                                <div class="slds-truncate" title="CheckBox"></div>
+                                            </th>
+                                            <th scope="col">
+                                                <div class="slds-truncate" title="Item">Item</div>
+                                            </th>
+                                            <th scope="col">
+                                                <div class="slds-truncate" title="SKU Details">SKU Details</div>
+                                            </th>
+                                            <th scope="col">
+                                                <div class="slds-truncate" title="Quantity">Quantity</div>
+                                            </th>
+                                            <th scope="col">
+                                                <div class="slds-truncate" title="MRP">Total Price</div>
+                                            </th>
+        
+        
+        
+        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <template for:each={AllOrderItems} for:item="opls" for:index="index">
+        
+                                            <tr key={opls.Id}>
+                                                <td>
+                                                    <lightning-input class="slds-p-left_xx-small" type="checkbox" data-index={index}
+                                                    data-id={opls.Id} checked={checkboxVal} name="checkbox" onchange={handlesChange}>
+                                                    </lightning-input>
+                                                </td>
+                                                <td>
+                                                    <lightning-input type="Test" variant="standard" value={opls.productName}
+                                                        class="custom-input" name="productName" label=""
+                                                        disabled></lightning-input>
+        
+                                                </td>
+                                                <td>
+        
+                                                    <lightning-input type="Text" variant="standard" value={opls.skudetail}
+                                                        class="custom-input" name="SkuDetails" label=""
+                                                        disabled></lightning-input>
+        
+                                                </td>
+                                                <td>
+        
+                                                    <lightning-input type="number" variant="standard" value={opls.totalQuantity}
+                                                        class="custom-inputtotalquantity" name="totalQuantity" label=""
+                                                        disabled></lightning-input>
+        
+                                                </td>
+                                                <td>
+                                                    <lightning-input type="number" value={opls.totalprice}
+                                                        class="custom-inputmrp" variant="standard" name="MRP" label=""
+                                                        disabled></lightning-input>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </template>
+                        <div class="slds-align_absolute-center" style="height:5rem">
+                            <lightning-button
+                                label="Next"
+                                onclick={handleNext}
+                                selected-rows={preSelectedRows} 
+                                disabled={selectedRows}>
+                            </lightning-button>&nbsp;&nbsp;
+                            <lightning-button variant="neutral" onclick={closeAction} label="Cancel"></lightning-button>
+                        </div>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+               
+            </lightning-card>
+        </div>
+    </template>
+    <template if:true={show2ndPage}>
+        <div>
+            <template if:true={contacts}>
+                <div>
+                    <lightning-card title="Create Child Case">
+                        <lightning-layout multiple-rows>
+                            <lightning-layout-item padding="around-small" size="12">
+                                <div class="slds-grid slds-gutters">
+                                    <div class="slds-col slds-size_6-of-12">
+                                        <div>
+                                            <lightning-input type="text" value={contacts.Subject} label="Subject"
+                                                name="Subject" onchange={handlesChange}></lightning-input>
+                                        </div>
+
+                                        <div>
+                                            <lightning-input value={contacts.Contact_Number__c} label="Contact-Number"
+                                                name="Contact-Number" onchange={handlesChange}></lightning-input>
+                                        </div>
+                                        <div>
+                                            <lightning-record-picker label="Contact" placeholder="Select Contact..."
+                                                matching-info={matchingInfo} display-info={displayInfo}
+                                                name="selectedContact" object-api-name="Contact"
+                                                onchange={handleChangeInPicker}>
+                                            </lightning-record-picker>
+                                        </div>
+                                        <div>
+                                            <lightning-record-picker label="Account" placeholder="Search Account"
+                                                name="selectedAccount" object-api-name="Account"
+                                                onchange={handleChangeInPicker}></lightning-record-picker>
+                                        </div>
+                                        <div>
+                                            <lightning-record-picker label="User" placeholder="Search User"
+                                                name="selectedUser" object-api-name="User"
+                                                onchange={handleChangeInPicker}></lightning-record-picker>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_6-of-12">
+                                        <!-- <div>
+                                            <lightning-record-picker label="ParentId" placeholder="Search Parent"
+                                                object-api-name="Case" value={recordId}></lightning-record-picker>
+                                        </div> -->
+
+                                        <div>
+                                            <lightning-combobox name="Type" label="Record Type"
+                                                placeholder="Select Record Type" options={typeOptions}
+                                                onchange={handleTypeChange} value={selectedTypeValue} required>
+                                            </lightning-combobox>
+                                        </div>
+                                        <div>
+                                            <lightning-combobox name="Rating" label="Type" placeholder="Select Type"
+                                                options={ratingOptions} onchange={handleRatingChange} required
+                                                value={selectedRatingValue}></lightning-combobox>
+                                        </div>
+                                        <div>
+                                            <lightning-combobox name="Industry" label="Sub-Type"
+                                                placeholder="Select Sub-Type" options={industryOptions}
+                                                onchange={handleIndustryChange} required
+                                                value={selectedIndustryValue}></lightning-combobox>
+                                        </div>
+                                        <!-- <div>
+                                            <lightning-combobox name="Industry" label="Sub-Type" placeholder="Select Sub-Type"
+                                         required></lightning-combobox>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                        <div slot="footer" style="text-align: center;">
+                           
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <lightning-button variant="neutral" onclick={closeAction} name="cancel" label="Cancel"></lightning-button>&nbsp;&nbsp;
+                            <lightning-button label="Save" onclick={handleClick}
+                            class="slds-m-left_x-small"></lightning-button>&nbsp;&nbsp;
+                            <lightning-button variant="neutral" onclick={handleBack} name="back" label="Back"></lightning-button>
+                        </div>
+                    </lightning-card>
+                </div>
+            </template>
+        </div>
+    </template>
+
+</template>

@@ -1,0 +1,62 @@
+<template>
+    
+    <div class="c-container">
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item padding="around-small" size="12">
+                    <div class="page-section page-header">
+                        <lightning-icon icon-name='standard:case' alternative-text='case' size='small' title='case'></lightning-icon>
+                        <h2>Related Open Cases</h2>
+                    </div>
+                </lightning-layout-item>
+                <template lwc:if={relCaseAvail}>
+                <lightning-layout-item padding="around-small" size="12">
+                    <template for:each={caseList} for:item="caseRec" for:index="index">
+                    <div class="caseCard" key={caseRec.Id}>
+                        <lightning-layout>
+                        <lightning-layout-item padding="around-small" size="6">
+                            <b>Case Number:</b>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-small" size="6">
+                            {caseRec.CaseNumber}
+                        </lightning-layout-item>
+                    </lightning-layout>
+                    <lightning-layout>
+                        <lightning-layout-item padding="around-small" size="6">
+                            <b>Case Type:</b>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-small" size="6">
+                            {caseRec.Sub_Type__c}
+                        </lightning-layout-item>
+                    </lightning-layout>
+                    <lightning-layout>
+                        <lightning-layout-item padding="around-small" size="6">
+                            <b>Case Sub-Type:</b>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-small" size="6">
+                            {caseRec.Sub_Sub_Type__c}
+                        </lightning-layout-item>
+                    </lightning-layout>
+                    <lightning-layout>
+                        <lightning-layout-item padding="around-small" size="6">
+                            <b>Status:</b>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-small" size="6">
+                            {caseRec.Status}
+                        </lightning-layout-item>
+                    </lightning-layout> 
+                    <hr/>
+                    <div style="text-align:center;">
+                    <a href = # onclick={caseClicked} data-id={caseRec.Id}> View Case </a>   
+                    </div>                
+                    </div>
+                    </template>
+                </lightning-layout-item>
+                </template>
+                <template lwc:else>
+                    <div style="display:table-cell; vertical-align:middle; text-align:center">
+                        <img src="https://ruby-customization-1508--kultapp--c.sandbox.vf.force.com/resource/1707904941000/NoRelatedCases" alt="No Open Related Cases" style="/*width:50%; display:block;margin-left:auto;margin-right:auto*/" class="noCases">
+                    </div>
+    </template>
+        </lightning-layout>
+    </div>
+</template>

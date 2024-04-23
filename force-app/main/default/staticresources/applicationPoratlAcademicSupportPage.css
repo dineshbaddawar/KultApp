@@ -1,0 +1,146 @@
+.horizontalContainer{
+    background-color:#A28C4F;
+    width:976px;
+    height:128px;
+    radius:8px;
+    border-radius: 8px;
+    overflow:hidden;
+    margin-top:10px;
+}
+.mainContainer{
+    width:976px; 
+    height:674px; 
+    top:104px; 
+    margin-left:1%;
+}
+.overlapContainer{
+    position: relative;
+    height: 1138px;
+    top: -747px;
+    left: -280px;
+    background-color:#082E44 ;
+    border-radius:50%;
+    
+}
+.textHeading {
+  /*font-family: 'DM Sans';  */
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 24px;
+}
+.subHeading {
+    color: #ffffff;
+	font-size:15px;
+}
+
+.tableHead{
+    background-color:#082E44;
+    color:#ffffff;
+
+}
+
+.tableBody{
+    border-radius:4px;
+    background-color:#fff;
+    
+}
+.spanEffect{
+    background-color:#61BC51;
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: 0.150rem 0.70rem;
+    font-size: 1rem;
+	border-radius: 25px;
+}
+
+.spanEffectBlue{
+    background-color:#56A5FF;
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: 0.150rem 0.70rem;
+    font-size: 1rem;
+	border-radius: 25px;
+}  
+
+.spanEffectOrange{
+    background-color:#F38738;
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: 0.150rem 0.70rem;
+    font-size: 1rem;
+	border-radius: 25px;
+} 
+
+
+.card1{
+    margin-bottom:4%;
+}
+
+.Description{
+   
+    margin-left: 3%;
+    line-height:30px;
+    margin-top:-10%;
+    position:relative;
+}
+.scheduleButton{
+    margin-top: -5%;
+    float: right;
+    border: 1px transparent;
+    border-radius: 8px;
+    width: 180px;
+    height: 40px;
+    gap:10px;
+}
+
+.TopTitle {
+    color: #082E44;
+    font-size: 24px; 
+    font-weight: 500; 
+    word-wrap: break-word; 
+    padding: 0.3%;
+}
+table {
+   border-collapse:separate;
+   border-spacing:0 11px;
+   margin-top:-11px;
+}
+
+td {
+   border:2px solid Chartreuse;
+   border-style:solid none;
+   padding:11px;
+   background-color:yellow;
+}
+
+td:first-child {
+   border-left-style:solid;
+   border-top-left-radius:11px;
+   border-bottom-left-radius:11px;
+}
+
+td:last-child {
+   border-right-style:solid;
+   border-bottom-right-radius:11px;
+   border-top-right-radius:11px;
+}
+th:first-child {
+   border-left-style:solid;
+   border-top-left-radius:11px;
+   border-bottom-left-radius:11px;
+}
+
+th:last-child {
+   border-right-style:solid;
+   border-bottom-right-radius:11px;
+   border-top-right-radius:11px;
+}

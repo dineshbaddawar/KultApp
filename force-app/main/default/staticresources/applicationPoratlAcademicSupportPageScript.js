@@ -1,0 +1,1 @@
+angular.module('DashboardApp').controller('AcademicSupportCtlr', function($scope,$rootScope,$timeout){});

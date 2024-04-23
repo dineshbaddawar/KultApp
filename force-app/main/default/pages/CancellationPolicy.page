@@ -1,0 +1,63 @@
+<apex:page renderAs="pdf" showHeader="false" sidebar="false"  applyHtmlTag="false" applyBodyTag="false" >
+    <head>
+        <style>
+            @page {
+            margin-top: 1cm;
+            margin-left: 0.5cm;
+            margin-right: 0.5cm;                        
+            // background-image: url('https://sudeengg--util--c.sandbox.vf.force.com/resource/1673873517000/Watermark?');
+            background-repeat: no-repeat;
+            background-position: center;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <span>
+            <div style="display: inline-block;vertical-align: middle;float:left;width:20%;">
+                <apex:image url="{!$Resource.kultAppLogo}" width="120" height="60" /><br/>   
+            </div>
+        </span>
+       
+        
+       
+        <br/>
+        <br/>
+        <br/>
+        <span>
+              <h1 style="text-align: center;color:#13928d;font-family: Noto Sans,Helvetica,sans-serif;font-size:28px;">
+                   CANCELLATION POLICY
+               </h1> 
+        </span>
+     
+    
+    
+    <table style="float: left" border="0" cellpadding="8" cellspacing="0" width="100%">        
+        <tr>
+            <td width="50%">
+                <ul>
+                    <li>
+                        If the order that customer want to cancel have not been shipped yet,customer can place a request by clicking Contact Kult Support in profile section from Kult app or through email on <a href="https://kult.app/">CS@kult.app</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        In case of any such event the condition of promotional offer/campaign/free gifts if any in support to that will be forfeited.
+                    </li>
+                </ul> 
+                <ul>
+                    <li>
+                        In case if order or item/s is canceled due to any unforeseen circumstances e.g. stock availability, natural climatic conditions etc. or any other condition at the sole discretion of Kult, the order or item/s willbe canceled and the full amount paid against the order or item/s willbe refunded.
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        After the cancellation request is duly processed by us, refunds are processed within 1- 2 business days from our side, and it takes 3-7 working days to reflect in the source account.<br/>For more details ,refer Terms of Use - Cancellation Policy. 
+                    </li>
+                </ul>
+            </td>                
+        </tr>                       
+    </table>     
+    </body>
+    
+</apex:page>

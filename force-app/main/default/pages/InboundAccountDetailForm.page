@@ -1,0 +1,67 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" controller="InboungFlowHelper"  >
+    <html>
+        <head>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js" crossorigin='anonymous'></script>
+            <style>
+                html,body{
+                    background-color:#e5e7eb;
+                    font-family: 'Dosis', sans-serif;
+                    font-family: 'Varela Round', sans-serif !important;
+                }
+            .col-auto{
+                width: 647px;
+                padding-bottom: 6px;
+            }
+            </style>
+            </head>
+            
+            <body id="body-pd" ng-app="myApp" ng-controller="myCtrl">
+                <script>
+                debugger;
+            var AccountObj;
+            AccountObj = JSON.parse('{!AccountRecordString}');
+            var app = angular.module('myApp', [])
+            .controller('myCtrl',function($scope){
+                $scope.data = AccountObj;
+            })
+            
+            </script>
+            <div class="card" style="width:100%;">
+                <div class="container mt-2">
+                    <div style="font-size: 21px;padding: 5px;background: darkgray;margin-bottom: 12px;margin-top: 24px;text-align: center;margin-right: 12px;">Other Details</div>
+                    <form action="/action_page.php">
+                        <div class="mb-2">
+                            <div class="form-outline mb-2">
+                                <label class="form-label" for="form11Example4" style="margin-top: -2px; margin-bottom: 4px;margin-left: 6px;">Phone</label>
+                                <input type="text" id="form11Example4"  ng-model="data.Phone" placeholder="Enter Phone"  class="form-control" />
+                                
+                            </div>
+                            
+                            
+                            <div class="form-outline mb-2">
+                                <label class="form-label" for="form11Example4" style="margin-top: -2px; margin-bottom: 4px;margin-left: 6px;">Name</label>
+                                <input type="text" id="form11Example4" ng-model="data.Name" placeholder="Enter Name"  class="form-control" />
+                            </div>
+                            
+                            <!--div class="form-outline mb-2">
+<label class="form-label" for="form11Example4" style="margin-top: -2px; margin-bottom: 4px;margin-left: 6px;">Status</label>
+<select ng-model="selectedName" ng-options="x for x in dataList"/>
+</div-->
+                            
+                            
+                        </div>
+                    </form>  
+                </div>
+                <div class="text-center">
+                    <button type="submit" ng-click="saveleadData()" class="btn btn-primary">Submit</button>
+                    <button type="submit" ng-click="saveleadData()" class="btn btn-primary">Cancel</button>
+                </div>
+               
+            </div>
+        </body>
+    </html>
+    
+</apex:page>

@@ -1,0 +1,101 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" access="global" 
+                controller="moveToWarehouseController">
+	<aura:attribute name="cxRequestOptions" type="List"/>
+    <aura:attribute name="cxRequestOptionsOriginal" type="List"/>
+    <aura:attribute name="caseReasonOptions" type="List"/>
+    <aura:attribute name="countryList" type="List"/>
+    <aura:attribute name="statesByCountry" type="Map"/>
+    <aura:attribute name="stateList" type="List"/>
+    <aura:attribute name = "caseRec" type="sObject" default = "{'sObjectType' : 'Case'}"/>
+    <aura:attribute name="showAddressField" type="Boolean" default = "false"/>
+    <aura:attribute name="showCaseOwnerError" type="Boolean" default = "false"/>
+    <aura:attribute name="showOutBound" type="Boolean" default = "false"/>
+    <aura:attribute name="disableCxRequest" type="Boolean" default = "true"/>
+    <aura:attribute name="oliList" type="OrderItem[]"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    
+    <aura:html tag="style">
+.cuf-content {
+padding: 0 0rem !important;
+}
+.slds-p-around–medium {
+padding: 0rem !important;
+}
+.slds-modal__content{
+overflow-y:hidden !important;
+height:unset !important;
+max-height:unset !important;
+}
+</aura:html>
+    <div class="modal-header slds-modal__header slds-size_1-of-1">
+    	<h2>Move to Warehouse Team</h2>
+    </div>
+    <div class="slds-modal__content" id="modal-content-id-1">
+        <aura:if isTrue="{!v.showCaseOwnerError}">
+
+        <aura:set attribute="else">
+            <aura:if isTrue="{!v.showOutBound}">
+        <lightning:select name="reasonTomove" label="Select Reason for Assignment" value="{!v.caseRec.Type_Of_Case__c}" onchange="{!c.handleReason}">
+        <option text="--None--" value=""/>
+    	<aura:iteration items="{!v.caseReasonOptions}" var="option" >
+            <option text="{!option}" value="{!option}" selected="{!option==v.caseRec.Type_Of_Case__c}"/>
+        </aura:iteration>
+    </lightning:select>
+    <lightning:select name="cxRequest" label="Select Customer Request" value="{!v.caseRec.Customer_s_Request__c}" onchange="{!c.handleCxRequest}" disabled="{!v.disableCxRequest}">
+        <option text="--None--" value=""/>
+    	<aura:iteration items="{!v.cxRequestOptions}" var="option" >
+            <option text="{!option}" value="{!option}" selected="{!option==v.caseRec.Customer_s_Request__c}"/>
+        </aura:iteration>
+    </lightning:select>
+        <lightning:input name="remarks" label="Enter Remarks" type="text" value="{!v.caseRec.Remarks_mentioned__c}" required="true"></lightning:input>
+        <aura:if isTrue="{!v.showAddressField}">
+            <lightning:input type="text" label="Street" value="{!v.caseRec.Address_With_Pin_Code__Street__s}"/>
+            <div class="twoColumns">
+                <lightning:input type="text" label="City" value="{!v.caseRec.Address_With_Pin_Code__City__s}" class="columnChild"/>
+                <lightning:input type="text" label="Postal Code" value="{!v.caseRec.Address_With_Pin_Code__PostalCode__s}" class="columnChild"/>
+            </div>
+            <div class="twoColumns">
+                <lightning:select name="country" label="Country" value="{!v.caseRec.Address_With_Pin_Code__CountryCode__s}" onchange="{!c.handleCountrySelect}" class="columnChild">
+        <option text="--None--" value=""/>
+    	<aura:iteration items="{!v.countryList}" var="option" >
+            <option text="{!option.label}" value="{!option.value}" selected="{!option==v.caseRec.Address_With_Pin_Code__CountryCode__s}"/>
+        </aura:iteration>
+    </lightning:select>
+    <lightning:select name="state" label="State" value="{!v.caseRec.Address_With_Pin_Code__StateCode__s}" onchange="" disabled="{!v.caseRec.Address_With_Pin_Code__CountryCode__s == null}" class="columnChild">
+        <option text="--None--" value=""/>
+    	<aura:iteration items="{!v.stateList}" var="option" >
+            <option text="{!option.label}" value="{!option.value}" selected="{!option==v.caseRec.Address_With_Pin_Code__StateCode__s}"/>
+        </aura:iteration>
+    </lightning:select>
+        </div>
+            <lightning:input type="number" label="Shipping Phone Number" value="{!v.caseRec.Shipping_Mobile_No__c}" class="columnChild"/>
+        </aura:if>
+        <aura:set attribute="else">
+            <div class="twoColumns">
+            <lightning:input type="text" label="Record Type" value="{!v.caseRec.RecordType.Name}" class="columnChild" disabled="true"/>
+            <lightning:input type="text" label="Case Type" value="{!v.caseRec.Sub_Type__c}" class="columnChild" disabled="true"/>
+            </div>
+            <div class="twoColumns">
+                <lightning:input type="text" label="Sub Type" value="{!v.caseRec.Sub_Sub_Type__c}" class="columnChild" disabled="true"/>
+                <!-- <lightning:input type="text" label="Case Type" value="{!v.caseRec.Sub_Type__c}" class="columnChild"/> -->
+                </div>
+                <lightning:input name="remarks" label="Enter Remarks" type="text" value="{!v.caseRec.Remarks_mentioned__c}" required="true"></lightning:input>
+        </aura:set>
+    </aura:if>
+        </aura:set>
+        </aura:if>
+    </div>
+    <footer>
+                    <div class="slds-col modal-footer slds-modal__footer">
+                    	<lightning:button variant="neutral"
+                                      label="Cancel"
+                                      title="Cancel"
+                                      onclick="{! c.closeModel }"/>
+                    <lightning:button variant="brand"
+                                      label="Save"
+                                      title="Save"
+                                      onclick="{!c.submitDetails}"/>
+                    </div>
+                </footer>
+</aura:component>

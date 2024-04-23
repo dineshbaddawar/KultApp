@@ -1,0 +1,61 @@
+:root {
+    --primary: #082E44;
+    --purple: #5C0C9C;
+    --golden: #A28C4F;
+    --black: #262626;
+    --white: #fff;
+    --grey: #F1F0F0;
+    --lightGrey: #EBEBEB;
+    --yellow: #ffb92c;
+	--red:#E62C46; 
+}
+*{
+   font-family: 'DM Sans';
+    
+}
+.mainHeading{
+    text-align:center;
+    color:var(--primary);
+    font-size:24px;
+    font-weight:700;
+    
+}
+.fontWeight{
+    font-weight:400;
+}
+.mainSubHead{
+    font-weight:700;
+    font-size:20px;
+    Line-height:26.04px;
+}
+.subHeads{
+    font-weight:500;
+    font-size:16px;
+}
+ul{
+    list-style:disc;
+}
+.align{
+    display:flex;
+}
+.closeButton{
+    background-color:white;
+    color:var(--primary);
+    border:1px solid var(--primary);
+    border-radius:6px;
+    width:120px;
+    height:40px;
+}
+.nextButton{
+    background-color:#082E44;
+    color:#fff;
+    border:1px solid #082E44 ;
+    border-radius:6px;
+    width:120px;
+    height:40px;
+}
+.btnGroup{
+    text-align:center;
+    gap:24px;
+    margin-top:4%;
+}

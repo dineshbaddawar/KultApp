@@ -1,0 +1,14 @@
+<template>
+     <template lwc:if={showTable}>
+          <lightning-card title="Case" icon-name="standard:case">
+               <div class="datatable-container">
+                    <c-json-table doc-temp-name={docTempName} json-data={jsonData}></c-json-table>
+               </div>
+               <br />
+               <div class="slds-align_absolute-center">
+                    <lightning-button variant="destructive" label="Cancel" onclick={closeAction}></lightning-button>
+                    <lightning-button variant="brand" label="Submit" class="slds-m-left_x-small" onclick={HandleImportRecord}></lightning-button>
+               </div>
+          </lightning-card>
+     </template>
+</template>

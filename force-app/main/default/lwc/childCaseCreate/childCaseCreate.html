@@ -1,0 +1,67 @@
+<template>
+	<template if:true={contacts}>
+		<div>
+			<lightning-card title="Create Child Case">
+				<lightning-layout multiple-rows>
+					<lightning-layout-item padding="around-small" size="12">
+						<div class="slds-grid slds-gutters">
+							<div class="slds-col slds-size_6-of-12">
+								<div>
+									<lightning-input type="text" value={contacts.Subject} label="Subject"
+										name="Subject" onchange={handlesChange}></lightning-input>
+								</div>
+								<div>
+									<lightning-input type="text" value={contacts.Owner.Name} label="Owner"
+										name="Owner" disabled></lightning-input>
+								</div>
+								<div>
+									<lightning-input value={contacts.Contact_Number__c} label="Contact Number"
+										name="Contact-Number"  onchange={handlesChange}></lightning-input>
+								</div>
+								<div>
+									<lightning-record-picker label="Contact" placeholder="Select Contact..."
+										matching-info={matchingInfo} display-info={displayInfo}  name="selectedContact"
+										value={contacts.ContactId} object-api-name="Contact" onchange={handleChangeInPicker}>
+									</lightning-record-picker>
+								</div>
+								<div>
+									<lightning-record-picker label="Account" placeholder="Search Account" name="selectedAccount"
+										object-api-name="Account" value={contacts.AccountId} onchange={handleChangeInPicker}></lightning-record-picker>
+								</div>
+							</div>
+							<div class="slds-col slds-size_6-of-12">
+								<!-- <div>
+									<lightning-record-picker label="ParentId" placeholder="Search Parent"
+										object-api-name="Case" value={recordId}></lightning-record-picker>
+								</div> -->
+
+								<div>
+									<lightning-combobox name="Type" label="Record Type" placeholder="Select Record Type"
+										options={typeOptions} onchange={handleTypeChange} value={selectedTypeValue} required>
+									</lightning-combobox>
+								</div>
+								<div>
+									<lightning-combobox name="Rating" label="Type" placeholder="Select Type"
+										options={ratingOptions} onchange={handleRatingChange} required
+										value={selectedRatingValue}></lightning-combobox>
+								</div>
+								 <div>
+									<lightning-combobox name="Industry" label="Sub-Type" placeholder="Select Sub-Type"
+										options={industryOptions} onchange={handleIndustryChange} required
+										value={selectedIndustryValue}></lightning-combobox>
+								</div>
+								<!-- <div>
+									<lightning-combobox name="Industry" label="Sub-Type" placeholder="Select Sub-Type"
+								 required></lightning-combobox>
+								</div> -->
+							</div>
+						</div>
+					</lightning-layout-item>
+				</lightning-layout>
+				<div slot="footer" style="text-align: center;">
+					<lightning-button label="Save" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+				</div>
+			</lightning-card>
+		</div>
+	</template>
+</template>

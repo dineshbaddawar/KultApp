@@ -1,0 +1,49 @@
+.c-container {
+    border: 1px solid #d8dde6;
+    margin: 10px 0 20px;
+    background-color: #efefef;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.c-container::-webkit-scrollbar {
+  display: none;
+}
+
+.noCases{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-bottom: 5%;
+}
+
+h2{
+    display: inline-block;
+    margin-left: 1%;
+}
+
+.page-header {
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: white;
+    padding: 2%;
+    border-radius: 5px;
+}
+
+.caseCard{
+    background-color: white;
+    border-radius: 5px;
+    padding: 1%;
+    margin: 1%;
+}
+
+@media screen and (min-width: 1680px){
+    .noCases{
+    display: block;
+    margin-left: 53%;
+    width: 50%;
+    margin-bottom: 5%;
+}
+}

@@ -1,0 +1,36 @@
+<!-- customDataTable.html -->
+<template>
+    <div class="slds-table">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="Name">Name</div>
+                    </th>
+                    <th class="slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="Age">Age</div>
+                    </th>
+                    <th class="slds-cell-wrap" scope="col">
+                        <div class="slds-truncate" title="Email">Email</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Use an iterator to loop through your data and generate rows -->
+                <template for:each={data} for:item="item">
+                    <tr key={item.Id} class="slds-hint-parent">
+                        <td data-label="Name">
+                            <div class="slds-truncate" title={item.Name}>{item.Name}</div>
+                        </td>
+                        <td data-label="Age">
+                            <div class="slds-truncate" title={item.Age}>{item.Age}</div>
+                        </td>
+                        <td data-label="Email">
+                            <div class="slds-truncate" title={item.Email}>{item.Email}</div>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</template>

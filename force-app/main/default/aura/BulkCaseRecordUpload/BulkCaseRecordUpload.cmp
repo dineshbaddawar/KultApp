@@ -1,0 +1,147 @@
+<aura:component controller="BulkCaseUploadController"
+    implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction,lightning:actionOverride"
+    access="global">
+    <aura:attribute name="TableContent" type="String" description=" Show the Result class" />
+    <aura:attribute name="TargetFileName" type="String" description="Name of the file" />
+    <aura:attribute name="tableheaders" type="Object[]" />
+    <aura:attribute name="fileContentData" type="String" />
+    <aura:attribute name="NumOfRecords" type="Integer" />
+    <aura:attribute name="showMain" type="Boolean" default="false" />
+    <aura:attribute name="showError" type="Boolean" default="false" />
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="fileName" type="String" default="No File Selected." />
+    <aura:attribute name="buttonLabel" type="string" default="Upload File" access="global"
+        description="The label of the button." />
+    <aura:attribute name="disabled" type="Boolean" default="false" access="global" />
+    <aura:attribute name="FileNameRecord" type="String" default="No File Selected.." />
+    <aura:import library="lightning:alert" property="LightningAlert" />
+    <aura:attribute name="showFirstScreen" type="Boolean" default="true" />
+    <aura:attribute name="showScondScreen" type="Boolean" default="false" />
+    <aura:attribute name="showThirdScreen" type="Boolean" default="false" />
+    <aura:attribute name="showFourthscreen" type="Boolean" default="false" />
+    <aura:attribute name="showFifthscreen" type="Boolean" default="false" />
+    <aura:attribute name="HideUploadSixscreen" type="Boolean" default="true" />
+    <aura:attribute name="tempNameToDownload" type="String" />
+    <aura:attribute name="docTempName" type="string" />
+    <aura:attribute name="class" type="String" />
+    <div style="background: white;">
+
+        <aura:if isTrue="{!v.showMain}">
+            <div class="slds-m-around_x-small slds-modal_large slds-scrollable_x"
+                style="z-index: 1; padding-bottom: 25px;">
+                <div class="container-fluid" style="margin: 1%;">
+                    <span style="text-align:center;font-size:14px;"> <b>
+                            <ui:outputRichText class="uiOutputRichText slds-m-around--large" value="New Case Record" />
+                        </b> </span>
+                    <ui:outputRichText class="uiOutputRichText slds-m--around-large" value="{!v.TableContent}" />
+                </div>
+            </div>
+            <div slot="footer" class="slds-align_absolute-center slds-m-top_x-small" style="width: 58%;">
+                <span>
+                    <lightning:button label="Cancel" variant="destructive" onclick="{!c.cancel}" />
+                </span>
+                <span>
+                    <lightning:button label="Submit" variant="brand" onclick="{!c.processFileContent}" />
+                </span>
+            </div>
+        </aura:if>
+
+        <aura:if isTrue="{!v.showFirstScreen}">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_1-of-3" style="padding-left: 3%;">
+                    <lightning:button variant="brand" class="slds-p-around_small colorBtn" label="Out of Stock"
+                        onclick="{!c.handleClickOutOfStock}" />
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning:button variant="brand" class="slds-p-around_small colorBtn"
+                        label="Pin Code Not Servicable" onclick="{!c.handleClickPincodeNotservice}" />
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning:button variant="brand" class="slds-p-around_small colorBtn"
+                        label="Courier/Delivery Issues" onclick="{!c.handleClickCourierDeliveryIssue}" />
+                </div>
+            </div>
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_1-of-3" style="padding-left: 3%;">
+                    <lightning:button variant="brand" class="slds-p-around_small colorBtn" label="Lost In Transit"
+                        onclick="{!c.handleClickLostInTransit}" />
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning:button variant="brand" class="slds-p-around_small colorBtn" label="Delay In Delivery"
+                        onclick="{!c.handleClickDelayInDelivery}" />
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning:button variant="brand" class="slds-p-around_small colorBtn" label="RTO Orders"
+                        onclick="{!c.handleClickRToOrders}" />
+                </div>
+            </div>
+        </aura:if>
+
+        <div class="slds-form-element" aura:id="form-container">
+
+            <aura:if isTrue="{!v.showError}">
+                <div class="exampleHolder">
+                    <lightning:spinner alternativeText="Loading" size="small" />
+                </div>
+            </aura:if>
+
+            <aura:if isTrue="{!v.showScondScreen}">
+                <div class="slds-form-element__control">
+                    <div class="slds-file-selector slds-file-selector_files slds-is-relative">
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col slds-size_0.5-of-4.5">
+                            </div>
+                            <aura:if isTrue="{!v.HideUploadSixscreen}">
+                                <div class="slds-col slds-size_2-of-4.5" style="">
+                                    <span>
+                                        <b style="font-size:15px;text-transform:uppercase;text-align:center">Upload Case
+                                            Records</b>
+                                    </span>
+                                </div>
+                            </aura:if>
+
+                            <div class="slds-col slds-size_2-of-4.5" style="">
+                                <span>
+                                    <aura:if isTrue="{!v.HideUploadSixscreen}">
+                                        <lightning:input aura:id="fuploader" onchange="{!c.onchange}" type="file"
+                                            name="file" label="Upload File" multiple="false" />
+                                    </aura:if>
+                                    <!-- <aura:if isTrue="{!v.showFifthscreen}"> -->
+                                    <c:bulkCaseRecordUploadXlsx aura:id="lwcComponent"
+                                        docTempName="{!v.tempNameToDownload}"></c:bulkCaseRecordUploadXlsx>
+                                    <!-- </aura:if> -->
+                                </span>
+                            </div>
+
+                            <aura:if isTrue="{!v.HideUploadSixscreen}">
+                                <div class="slds-col slds-size_2-of-4.5">
+                                    <span>
+                                        <c:BulkCaseRecordTemp docTempName="{!v.tempNameToDownload}" />
+                                    </span>
+                                </div>
+                            </aura:if>
+
+                        </div>
+                    </div>
+                </div>
+            </aura:if>
+
+
+            <!-- <aura:if isTrue="{!v.showFifthscreen}">
+              <c:bulkCaseRecordUploadXlsx aura:id="lwcComponent" docTempName="{!v.tempNameToDownload}"></c:bulkCaseRecordUploadXlsx>
+            </aura:if> -->
+
+            <!-- <aura:if isTrue="{!v.showFourthscreen}">
+                <div class="slds-p-around_small">
+                <lightning:select aura:id="select" name="select" label="SELECT FORMAT" class="{!v.class}" onchange="{! c.onChangeFileType }">
+                    
+                    <option value="xls">XLS/XLSX</option>
+                    <option value="csv">CSV</option>
+                </lightning:select>
+                </div>
+            </aura:if> -->
+
+        </div>
+
+    </div>
+</aura:component>

@@ -1,0 +1,40 @@
+<template>
+    <div style="background: ghostwhite;">
+        <div class="slds-text-align_center slds-m-around_medium" style="padding-top:15px">
+            <h1>New Case</h1>
+        </div>
+
+        <template if:true={showOpportunityRecordPage}>
+            <div class="slds-box slds-m-around_medium">
+                <template if:true={CaseDataAvail}>
+                    <lightning-record-edit-form object-api-name="Case" onsuccess={handleSuccess} onerror={handleError}
+                        record-type-id={recodTypeName} onsubmit={handleSubmit}>
+                        <div class="slds-grid slds-wrap">
+                            <template for:each={caseFieldSet} for:item="field">
+                                <div key={field.key} class="slds-col slds-size_6-of-12">
+                                    <span>
+                                        <lightning-input-field onchange={onchageInputOpp} field-name={field.value}
+                                            value={_txtBoxVal}></lightning-input-field>
+                                    </span>
+                                </div>
+                            </template>
+                            <template if:true={showSubFields}>
+                                <template for:each={sendCaseField} for:item="field">
+                                    <div key={field.key} class="slds-col slds-size_6-of-12">
+                                        <span>
+                                            <lightning-input-field onsubmit={handleSubmitForOtherFields}
+                                                field-name={field.value}></lightning-input-field>
+                                        </span>
+                                    </div>
+                                </template>
+                            </template>
+                        </div>
+
+                        <lightning-button class="slds-align_absolute-center" type="submit" variant="brand" label="Save"
+                            onclick={handleClick}></lightning-button>
+                    </lightning-record-edit-form>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

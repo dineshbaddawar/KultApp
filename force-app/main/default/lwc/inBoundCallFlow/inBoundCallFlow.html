@@ -1,0 +1,36 @@
+<template>
+    <template if:true={show1stPage}>
+        <lightning-quick-action-panel header="Create Case">
+            <lightning-card>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="horizontal-small">
+                        <lightning-combobox label="Category" options={optionsCategory} onchange={handlechange} placeholder="Select Category" required name="Category"> </lightning-combobox>
+                        <lightning-combobox name="Type" label="Record Type" placeholder="Select Record Type"
+                            options={typeOptions} onchange={handleTypeChange} value={selectedTypeValue} required>
+                        </lightning-combobox>                        
+                        
+
+                        <lightning-combobox name="Rating" label="Type" placeholder="Select Type"
+                            options={ratingOptions} onchange={handleRatingChange} required
+                            value={selectedRatingValue}  style="margin-top: 24px;"></lightning-combobox>
+                        <lightning-combobox name="Industry" label="Sub-Type" placeholder="Select Sub-Type"
+                            options={industryOptions} onchange={handleIndustryChange} required
+                            value={selectedIndustryValue} style="margin-top: 13px;"></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6" padding="horizontal-small">
+                        <lightning-input type="text" label="Subject" onchange={handlechange} name="Subject" ></lightning-input>
+
+                        <c-order-selection-from-account recordaccountid={recordaccountid}   onsendidtoaura={handleLWCOrderLookUP} style="margin-top: -25px;"></c-order-selection-from-account>
+
+                        <lightning-textarea name="Description" label="Description" onchange={handlechange}></lightning-textarea>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-card>
+            <div class="slds-align_absolute-center" style="height:5rem">
+                <lightning-button variant="neutral" onclick={closeAction} label="Cancel"></lightning-button>&nbsp;&nbsp;
+                <lightning-button label="Save" variant="Brand" onclick={handleSave} selected-rows={preSelectedRows} disabled={selectedRows}></lightning-button>
+                
+            </div>
+        </lightning-quick-action-panel>
+    </template>
+</template>

@@ -1,0 +1,99 @@
+<template>
+    <lightning-quick-action-panel >
+    <lightning-card >
+
+         <template if:true={ShowAccountDetailVFP}>
+              <!-- HI
+              <iframe src={pdfLink} width="100%" height="100%" style="border:none;">
+              </iframe> -->
+              <center><b style="font-size: 20px;">Account Details </b> </center> 
+              <div class="slds-box slds-m-around_medium">
+               <lightning-record-view-form object-api-name="Account" record-id={defaultaccountId} onsuccess={handleSuccess}  onerror={handleError} onsubmit={handleSubmit}>
+                    <lightning-messages></lightning-messages>
+                 <div class="slds-grid slds-wrap">
+                     <template for:each={oppFiedlSet} for:item="field">
+                         <div key={field.key} class="slds-col slds-size_6-of-12">
+                             <span>
+                                 <lightning-output-field   field-name={field.value}></lightning-output-field>
+                             </span>
+                         </div>
+                     </template>
+                 </div>
+               </lightning-record-view-form>
+          </div>
+          <div class="slds-align_absolute-center">
+              <lightning-button class="slds-m-right_small" variant="brand" label="OK" onclick={closeQuickAction} ></lightning-button>
+              </div>
+         </template>
+         
+         <template if:true={isShowAccountViewForm}>
+
+         <center><b style="font-size: 20px;">Account Details </b> </center> 
+        <div class="slds-box slds-m-around_medium">
+       <lightning-record-view-form object-api-name="Account" record-id={updatedaccountid} onsuccess={handleSuccess}  onerror={handleError} onsubmit={handleSubmit}>
+           <lightning-messages></lightning-messages>
+           <div class="slds-grid slds-wrap">
+               <template for:each={oppFiedlSet} for:item="field">
+                   <div key={field.key} class="slds-col slds-size_6-of-12">
+                       <span>
+                           <lightning-output-field   field-name={field.value}></lightning-output-field>
+                       </span>
+                   </div>
+               </template>
+           </div>
+       </lightning-record-view-form>
+   </div>
+   
+    <div class="slds-align_absolute-center">
+         <lightning-button class="slds-m-right_small" variant="brand" label="Save" onclick={closeQuickAction} ></lightning-button>
+              <lightning-button class="slds-m-right_small"  onclick={CreateCaseDetailPage} variant="success" label="Create Case" ></lightning-button>
+         </div>
+    </template>
+
+
+    <template if:true={NoAccountFound}>
+    <div class="slds-grid slds-wrap">
+         <center><b style="font-size: 20px;margin-top: -37px;">Enter Details </b> </center>
+         <br/>
+         <div class="slds-col slds-size_12-of-12">
+              <lightning-input type="text" label="Current Phone Number"  value={currentPhoneValue} onchange={handleAlertNatePhoneChange} disabled></lightning-input>
+         </div>
+         <div class="slds-col slds-size_12-of-12">
+              <lightning-input type="text" label="Primary Phone number" onchange={handlePrimaryPhoneChange} ></lightning-input>
+         </div>
+    </div>
+    <br/>
+    <div class="slds-align_absolute-center">
+    <lightning-button class="slds-m-right_small" label="Cancel" onclick={closeQuickAction} ></lightning-button>
+       <!-- <lightning-button class="slds-m-right_small" type="submit" onclick={NextButtonClick} variant="brand" label="Save & Next" ></lightning-button> -->
+       <lightning-button class="slds-m-right_small" type="submit" onclick={FindAccount} variant="brand" label="Find Account" ></lightning-button>
+    </div>
+</template>
+
+
+<template if:true={showCreateCase}>
+    <c-in-bound-call-flow recordaccountid={updatedaccountid}  style="margin-top: -25px;"></c-in-bound-call-flow>
+</template>
+
+<template if:true={CreateAccountForm}>
+    <div class="slds-grid slds-wrap">
+        <center><b style="font-size: 20px;margin-top: -37px;">Create Account </b> </center>
+        <br/>
+        <div class="slds-col slds-size_12-of-12">
+             <lightning-input type="text" label="Account Name"   onchange={handleAccountName} ></lightning-input>
+        </div>
+        <div class="slds-col slds-size_12-of-12">
+             <lightning-input type="text" label="Phone number" onchange={handlePrimaryPhone} ></lightning-input>
+        </div>
+   </div>
+   <br/>
+   <div class="slds-align_absolute-center">
+    <lightning-button class="slds-m-right_small" label="Cancel" onclick={closeQuickAction} ></lightning-button>
+       <lightning-button class="slds-m-right_small" type="submit" onclick={CreateNewAccount} variant="brand" label="Save & Next" ></lightning-button>
+    </div>
+</template>
+    
+
+    </lightning-card>
+</lightning-quick-action-panel>
+</template>

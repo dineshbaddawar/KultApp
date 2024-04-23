@@ -1,0 +1,29 @@
+<template>
+	<lightning-quick-action-panel header="Assign To Marketing Team">
+		<lightning-layout multiple-rows>
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+				padding="horizontal-small">
+				<div class="custom-box">
+					<lightning-record-picker object-api-name="User" placeholder="Search..." name="Users"
+						label="Select Marketing Team Member" onchange={handleChange} filter={filter} required>
+					</lightning-record-picker>
+				</div>
+			</lightning-layout-item>
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6"
+				padding="horizontal-small">
+				<div class="custom-box">
+					<lightning-input type="text" variant="standard" label="Marketing Team Assignment Reason"
+						onchange={handleChange} name="ReasonName" required></lightning-input>
+					<!-- <lightning-input type="text" variant="standard" label="Marketing Team Assignment Remarks"
+								value={singleCase.MT_Assignment_Remarks__c} onchange={handleChange} name="RemarkName"></lightning-input> -->
+				</div>
+			</lightning-layout-item>
+			<div class="slds-align_absolute-center" style="height:5rem;">
+				<lightning-button type="submit" label="Cancel" variant="neutral"
+					onclick={handleCancel}></lightning-button>&nbsp; &nbsp;
+				<lightning-button type="submit" label="Save" variant="brand" onclick={handleSave}> </lightning-button>
+			</div>
+		</lightning-layout>
+		
+	</lightning-quick-action-panel>
+</template>

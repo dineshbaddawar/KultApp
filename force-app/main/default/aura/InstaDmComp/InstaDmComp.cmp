@@ -1,0 +1,25 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" controller="instaDmLWCCompController">
+    
+    <aura:attribute name="chatMessages" type="List" default="[]" />
+    <aura:attribute name="totalMessages" type="Integer"  />
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="chatInitiatedTime" type="String"/>
+    <aura:attribute name="recipientId" type="String"/>
+    <aura:attribute name="senderName" type="String"/>
+    <aura:attribute name="showSpinner" type="Boolean"  />
+    <aura:attribute name="showLwc" type="Boolean"  />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <force:recordData aura:id="recordLoader"
+                      recordId="{!v.recordId}"
+                      layoutType="FULL"
+                      recordUpdated="{!c.handleRecordUpdated}"/>
+    
+    <aura:if isTrue="{!v.showLwc}">
+        <aura:set attribute="else">
+            <div class="exampleHolder">
+                <lightning:spinner alternativeText="Loading" size="large" />
+            </div>
+        </aura:set>
+    </aura:if>
+    
+</aura:component>

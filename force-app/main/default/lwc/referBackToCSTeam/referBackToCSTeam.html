@@ -1,0 +1,62 @@
+<template>
+	<lightning-quick-action-panel header="Refer Back To CS Team">
+
+		<!-- <lightning-combobox label="Select Refer Back Reason" options={RefrebackOption} onchange={handelreferbackChange} required>
+		</lightning-combobox> -->
+		<lightning-combobox label="Select Refer Back Reason" options={RefrebackOption} onchange={handelreferbackChange}  required>
+		</lightning-combobox>
+
+         <template if:true={RequestApprove}>
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+    
+        </template>
+
+		<template if:true={RequestApprove}>
+			<template for:each={ListOfCaseRecords} for:item="cs" for:index="index">
+				<lightning-input key={cs.Id} type="text" variant="standard" name="Approval Remarks"
+					label="Approval Remarks" value={cs.Approval_Remarks__c} onchange ={handelApprovalremark} required></lightning-input>
+				<!--lightning-input key={cs.Id} type="number" variant="standard" name="Refund Amount"
+					label="Refund Amount" value={cs.OrderId__r.Refund_Amount__c} onchange ={handelRefundAmount} required></lightning-input-->
+			</template>
+		</template>
+
+         <template if:true={RequestReject}>
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+         </template>
+
+		<template if:true={RequestReject}>
+			<template for:each={ListOfCaseRecords} for:item="cs" for:index="index">
+				<!-- <lightning-input key={cs.Id} type="text" variant="standard" name="Rejection Remarks" value={cs.Rejection_Remarks__c}
+					label="Rejection Remarks" onchange ={handelRejectionmark} required></lightning-input> -->
+				<lightning-input key={cs.Id} type="text" variant="standard" name="Rejection Reason" value={cs.Rejection_Reason__c}
+					label="Rejection Reason" onchange ={handelRejectionreason} required></lightning-input>
+			</template>
+		</template>
+
+         <template if:true={NeedMoreInfo}>
+            <tr>
+                <td colspan="5">&nbsp;</td>
+            </tr>
+         </template>
+
+		<template if:true={NeedMoreInfo}>
+			<template for:each={ListOfCaseRecords} for:item="cs" for:index="index">
+				<lightning-input key={cs.Id} type="text" variant="standard" name="Describe Info Needed"  value={cs.Describe_Information_Needed__c}
+					label="Describe Info Needed" onchange ={handeldescribeInformation} required></lightning-input>
+			</template>
+		</template>
+
+
+		<div class="slds-m-top_medium slds-text-align_center">
+			<lightning-button type="submit" label="Cancel" variant="neutral" onclick={handleCancel}></lightning-button>
+			&nbsp; &nbsp;
+			<lightning-button type="submit" label="Save" variant="brand" onclick={handleSave}> </lightning-button>
+		</div>
+
+	</lightning-quick-action-panel>
+
+</template>

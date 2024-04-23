@@ -1,0 +1,30 @@
+<template>
+    <lightning-layout multiple-rows>
+        <template for:each={AllCaseResult} for:item="Allcase">
+            <lightning-layout-item key={Allcase.Id} size="12" small-device-size="12" medium-device-size="6" large-device-size="4" padding="horizontal-small">
+                <div>
+                    <div>
+                        <lightning-input type="tel" label="Customer New Contact Number" value={Allcase.contact.phone} onchange={handleChange} name="contactNumber"></lightning-input>
+                    </div>
+                    <div>
+                        <lightning-input type="text" label="Customer New Address" value={Allcase.Address_With_Pin_Code__Street__c} onchange={handleChange} name="addStreet"></lightning-input>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <lightning-input type="tel" label="Customer Contact Number" value={Allcase.Address_With_Pin_Code__PostalCode__c} onchange={handleChange} name="addPostal"></lightning-input>
+                    </div>
+                    <div>
+                        <lightning-input type="text" label="Customer City" value={Allcase.Address_With_Pin_Code__City__c} onchange={handleChange} name="addCity"></lightning-input>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <lightning-input type="text" label="Customer State Code" value={Allcase.Address_With_Pin_Code__StateCode__c} name="addState" onchange={handleChange}></lightning-input>
+                    </div>
+                </div>
+                <lightning-button variant="base" label="Base" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

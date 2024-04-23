@@ -1,0 +1,13 @@
+th{
+    font-size: large;
+}
+td{
+    font-size: medium;
+    white-space: normal;
+}
+.slds-truncate {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}

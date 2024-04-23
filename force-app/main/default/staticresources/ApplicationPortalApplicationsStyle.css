@@ -1,0 +1,99 @@
+:root {
+    --primary: #082E44;
+    --purple: #5C0C9C;
+    --golden: #A28C4F;
+    --black: #262626;
+    --white: #fff;
+    --grey: #F1F0F0;
+    --lightGrey: #EBEBEB;
+    --yellow: #ffb92c;
+	--cardBorder:#ddd;
+	--subHead:#848484;
+	--inputBackground:#F3F3F3;
+}
+
+.mainContainer{
+    width:976px; 
+    height:674px; 
+    top:104px; 
+    margin-left:1%;
+}
+
+.alignTop{
+	display:flex;
+	justify-content:space-between;
+}
+.mainHeading{
+	color:var(--primary);
+	font-size:24px;
+	font-weight:700;
+}
+                    
+.align{
+	display:flex;
+	justify-content: space-between;
+}
+.cardHeading{
+	color:var(--primary);
+	font-size:20px;
+	font-weight:500;
+}
+
+.primaryButton{
+	width:132px;
+	height:40px;
+	font-size:12px;
+	font-weight:500;
+	color:var(--white);
+	background:var(--primary);
+	border: 1px solid var(--primary);
+	border-radius:6px;
+                        
+}
+.withdrawButton{
+	width:140px;
+	height:40px;
+	font-size:12px;
+	font-weight:500;
+	color:var(--primary);
+	background:var(--white);
+	border: 1px solid var(--primary);
+	border-radius:6px;
+                        
+}
+
+.subHead{
+	color:var(--subHead);
+	font-size:12px;
+	font-weight:500;
+	line-height:18px;
+}
+.subHeadText{
+	color:var(--black);
+	font-size:12px;
+	font-weight:500;
+	line-height:18px;
+}
+
+.formHeading{
+	font-size:14px;
+	font-weight:400;
+	line-height:21px;
+}
+
+.formInput{
+	background-color:var(--inputBackground) !Important;
+}
+
+.nav-link {
+    color: var(--primary) !Important;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: var(--primary);
+    background-color:#EBEBEB !Important;
+    border-color: transparent transparent var(--primary) !Important; 
+	border-width: medium;
+	font-weight:500;
+}
+
